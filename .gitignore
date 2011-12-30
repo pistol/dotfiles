@@ -7,3 +7,4 @@ emacs.d/tramp
 emacs.d/config/private.el
 emacs.d/.org-id-locations
 *.elc
+#*#
