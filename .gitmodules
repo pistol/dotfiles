@@ -88,3 +88,6 @@
 [submodule "emacs.d/vendor/key-chord"]
 	path = emacs.d/vendor/key-chord
 	url = https://github.com/emacsmirror/key-chord.git
+[submodule "emacs.d/vendor/color-theme-wombat"]
+	path = emacs.d/vendor/color-theme-wombat
+	url = https://github.com/demizer/color-theme-wombat.git
