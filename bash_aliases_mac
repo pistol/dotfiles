@@ -1,0 +1,47 @@
+############################################################
+## OS X
+############################################################
+
+alias ls='ls -hF -G'
+
+# Aquamacs
+alias a='aquamacs'
+
+# Get rid of those pesky .DS_Store files recursively
+alias dstore-clean='find . -type f -name .DS_Store -print0 | xargs -0 rm'
+
+# Track who is listening to your iTunes music
+alias whotunes='lsof -r 2 -n -P -F n -c iTunes -a -i TCP@`hostname`:3689'
+
+if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
+  alias emacs='TERM=xterm-256color /Applications/Emacs.app/Contents/MacOS/Emacs'
+  alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t'
+  alias e='emacsclient'
+fi
+
+# Properly dispay disk usage sorted by size
+#alias du='du -d 1 . | sort -nr | cut -f 2- | xargs -I {} du -sh {}';
+function dus {
+  du -d 1 $1 | sort -nr | cut -f 2- | xargs -I {} du -sh {}
+}
+
+# cdf: cd's to frontmost window of Finder
+alias cdf='cd_finder'
+function cd_finder {
+  currFolderPath=$( /usr/bin/osascript <<"        EOT"
+    tell application "Finder"
+        try
+            set currFolder to (folder of the front window as alias)
+                on error
+            set currFolder to (path to desktop folder as alias)
+                end try
+            POSIX path of currFolder
+            end tell
+        EOT
+  )
+  cd "$currFolderPath"
+}
+
+if [ -e ~/.bash_aliases_private_mac ]; then
+  . ~/.bash_aliases_private_mac
+fi

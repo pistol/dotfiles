@@ -1,0 +1,10 @@
+############################################################
+## Linux
+############################################################
+
+alias j='qstat'
+
+# Properly dispay disk usage sorted by size
+function dus {
+  du --max-depth 1 . | sort -nr | cut -f 2- | xargs -I {} du -sh {}
+}

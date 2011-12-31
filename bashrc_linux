@@ -1,0 +1,6 @@
+# Add global linux settings here
+
+# Load private settings
+if [ -e ~/.bashrc_private_linux ]; then
+  . ~/.bashrc_private_linux
+fi

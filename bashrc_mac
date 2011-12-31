@@ -1,0 +1,6 @@
+# Add global mac settings here
+
+# Load private settings
+if [ -e ~/.bashrc_private_mac ]; then
+  . ~/.bashrc_private_mac
+fi

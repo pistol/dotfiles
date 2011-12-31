@@ -12,21 +12,18 @@ add-alias ()
 ## List
 ############################################################
 
-if [[ `uname` == 'Darwin' ]]; then
-  alias ls="ls -G"
-  # good for dark backgrounds
-  export LSCOLORS=gxfxcxdxbxegedabagacad
-else
-  alias ls="ls --color=auto"
-  # good for dark backgrounds
-  export LS_COLORS='no=00:fi=00:di=00;36:ln=00;35:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;31:'
-  # For LS_COLORS template: $ dircolors /etc/DIR_COLORS
-fi
-
 alias l="ls"
 alias ll="ls -lh"
 alias la="ls -a"
 alias lal="ls -alh"
+
+alias lx='ls -lXB'              # sort by extension
+alias lk='ls -lSr'              # sort by size
+alias lc='ls -lcr'              # sort by change time
+alias lu='ls -lur'              # sort by access time
+alias lr='ls -laR'              # recursive ls
+alias lt='ls -ltr'              # sort by date
+alias lm='ls -al |more'         # pipe through 'more'
 
 ############################################################
 ## Git
@@ -94,109 +91,115 @@ function st {
 alias svn-clean='find . -name .svn -print0 | xargs -0 rm -rf'
 
 ############################################################
-## OS X
-############################################################
-
-# Get rid of those pesky .DS_Store files recursively
-alias dstore-clean='find . -type f -name .DS_Store -print0 | xargs -0 rm'
-
-# Track who is listening to your iTunes music
-alias whotunes='lsof -r 2 -n -P -F n -c iTunes -a -i TCP@`hostname`:3689'
-
-############################################################
-## Ruby
-############################################################
-
-alias r="rake"
-alias a="autotest -q"
-alias aa="rake db:test:clone && a"
-alias rtags="ctags -e -R app lib vendor tasks"
-
-function gemdir {
-  echo `rvm gemdir`
-}
-
-function gemfind {
-  local gems=`gemdir`/gems
-  echo `ls $gems | grep -i $1 | sort | tail -1`
-}
-
-# Use: gemcd <name>, cd's into your gems directory
-# that best matches the name provided.
-function gemcd {
-  cd `gemdir`/gems/`gemfind $1`
-}
-
-# Use: gemdoc <gem name>, opens the rdoc of the gem
-# that best matches the name provided.
-function gemdoc {
-  open `gemdir`/doc/`gemfind $1`/rdoc/index.html
-}
-
-function rinstall {
-  ruby-build $1 ~/.rbenv/versions/$1
-}
-alias rhash="rbenv rehash"
-
-############################################################
-## Bundler
-############################################################
-function ignore_vendor_ruby {
-  grep -q 'vendor/ruby' .gitignore > /dev/null
-  if [[ $? -ne 0 ]]; then
-    echo -e "\nvendor/ruby" >> .gitignore
-  fi
-}
-
-alias b="bundle"
-alias bi="b install --path vendor"
-alias bil="bi --local"
-alias bu="b update"
-alias be="b exec"
-alias binit="bi && bundle package && ignore_vendor_ruby"
-
-############################################################
-## Rails
-############################################################
-
-#alias rails="rails -m ~/.rails.d/template.rb"
-alias ss="script/server"
-alias sg="script/generate"
-alias sc="script/console"
-alias sr="script/rails"
-alias tl='tail -f log/development.log'
-
-############################################################
-## MongoDB
-############################################################
-alias repair-mongo="rm /usr/local/var/mongodb/mongod.lock && mongod --repair"
-
-############################################################
 ## Miscellaneous
 ############################################################
 
-if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-  alias emacs='TERM=xterm-256color /Applications/Emacs.app/Contents/MacOS/Emacs'
-  alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t'
-  alias e='emacsclient'
-fi
+# Display $PATH dirs one per line
+function path {
+  local path=$1
+  : ${path:=$PATH}
+  echo $path | tr ':' '\n'
+}
+alias p='path'
 
 alias grep='GREP_COLOR="1;37;41" grep --color=auto'
+alias grep='GREP_COLOR="1;37;41" grep --color=auto'
 alias wgeto="wget -q -O -"
-alias sha1="openssl dgst -sha1"
-alias sha2="openssl dgst -sha256"
-alias b64="openssl enc -base64"
-alias 256color="export TERM=xterm-256color"
-alias prettyjson="python -mjson.tool"
+alias h='history'
+alias c="clear"
+# Mkdir creates parent dirs in path if missing
+alias mkdir='mkdir -p'
+# Edit vim settings
+alias ve="vim ~/.vimrc"
+# Reload bash settings
+alias br="source ~/.bashrc"
 
-alias flushdns='dscacheutil -flushcache'
+# Free space, human readable
+alias df="df -h"
+alias f='fg'
+alias z='suspend'
+alias \!='history'
 
-alias whichlinux='uname -a; cat /etc/*release; cat /etc/issue'
+# List open ports per process
+#ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | awk '"'"'{print $1, $8, $9}'"'"' | sort -f'
+ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | sort -fk1'
+alias ports="$ports"
+alias sports="sudo $ports"
 
+#extract files eg: ex tarball.tar#
+function ex {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjfv $1;;
+      *.tar.gz)    tar xzfv $1;;
+      *.bz2)       bunzip2 $1;;
+      *.rar)       rar x $1;;
+      *.gz)        gunzip $1;;
+      *.tar)       tar xfv $1;;
+      *.tbz2)      tar xjfv $1;;
+      *.tgz)       tar xzfv $1;;
+      *.zip)       unzip $1;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1;;
+      *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Process listing
+#alias ps="ps aux"
+function psgrep {
+  if [ ! -z $1 ] ; then
+    echo "Grepping for processes matching $1..."
+    ps aux | grep $1
+    #ps aux | grep --color=auto $1 | grep -v grep
+  else
+
+    echo "!! Need name to grep for"
+  fi
+}
+
+# showip - show the current IP address if connected to the internet.
+# Usage: showip.
+#
+function showip {
+  lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | awk '{ print $4 }' | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g'
+}
+
+# Quick webserver for current directory
 function serve {
   local port=$1
   : ${port:=3000}
   ruby -rwebrick -e"s = WEBrick::HTTPServer.new(:Port => $port, :DocumentRoot => Dir.pwd); trap(%q(INT)) { s.shutdown }; s.start"
 }
+
+############################################################
+# Private aliases (OS independent)
+############################################################
+
+if [ -e ~/.bash_aliases_private ]; then
+  . ~/.bash_aliases_private
+fi
+
+############################################################
+# OS specific aliases (Mac or Linux)
+############################################################
+
+case $(uname -s) in
+  # Mac OS X
+  Darwin)
+    if [ -e ~/.bash_aliases_mac ]; then
+      . ~/.bash_aliases_mac
+    fi
+    ;;
+
+  Linux)
+    if [ -e ~/.bash_aliases_linux ]; then
+      . ~/.bash_aliases_linux
+    fi
+    ;;
+esac
 
 ############################################################
