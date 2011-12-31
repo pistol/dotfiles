@@ -2,7 +2,7 @@
 startup_message off
 
 # change escape leader
-escape ^Zz
+escape ^o[
 
 # utf8
 setenv LC_CTYPE en_US.UTF-8
