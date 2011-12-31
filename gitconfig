@@ -27,7 +27,5 @@
   ignoresubmodules = untracked
 [core]
   excludesfile = /Users/pistol/.gitignore
-[heroku]
-  account = personal
 [url "git@github.com:"]
     pushInsteadOf = git://github.com/
