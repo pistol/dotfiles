@@ -1,6 +1,6 @@
 [user]
-	email = ryan@mcgeary.org
-	name = Ryan McGeary
+  email =
+  name = pistol
 [alias]
   co = checkout
   st = status
@@ -20,12 +20,14 @@
 [push]
   default = upstream
 [remote "origin"]
-	push = HEAD
+  push = HEAD
 [github]
-	user = rmm5t
+  user = pistol
 [diff]
   ignoresubmodules = untracked
 [core]
-	excludesfile = /Users/rmcgeary/.gitignore
+  excludesfile = /Users/pistol/.gitignore
 [heroku]
-	account = personal
+  account = personal
+[url "git@github.com:"]
+    pushInsteadOf = git://github.com/
