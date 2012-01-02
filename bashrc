@@ -160,8 +160,9 @@ fi
 
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
-elif  [ -f /etc/bash_completion ]; then
-  . /etc/bash_completion
+#elif  [ -f /etc/bash_completion ]; then
+  #FIXME broken?
+  #. /etc/bash_completion
 elif  [ -f /etc/profile.d/bash_completion ]; then
   . /etc/profile.d/bash_completion
 elif [ -e ~/.bash_completion ]; then

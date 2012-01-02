@@ -18,9 +18,7 @@
 [merge]
   summary = true
 [push]
-  default = upstream
-[remote "origin"]
-  push = HEAD
+  default = matching
 [github]
   user = pistol
 [diff]
@@ -28,4 +26,4 @@
 [core]
   excludesfile = /Users/pistol/.gitignore
 [url "git@github.com:"]
-    pushInsteadOf = git://github.com/
+ pushInsteadOf = git://github.com/
