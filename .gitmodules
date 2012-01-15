@@ -88,3 +88,21 @@
 [submodule "emacs.d/vendor/key-chord"]
 	path = emacs.d/vendor/key-chord
 	url = https://github.com/emacsmirror/key-chord.git
+[submodule "emacs.d/vendor/bookmark+"]
+	path = emacs.d/vendor/bookmark+
+	url = git://github.com/emacsmirror/bookmark-plus.git
+[submodule "emacs.d/vendor/dired+"]
+	path = emacs.d/vendor/dired+
+	url = git://github.com/emacsmirror/dired-plus.git
+[submodule "emacs.d/vendor/move-text"]
+	path = emacs.d/vendor/move-text
+	url = git://github.com/emacsmirror/move-text.git
+[submodule "emacs.d/vendor/sunrise-commander"]
+	path = emacs.d/vendor/sunrise-commander
+	url = git://github.com/emacsmirror/sunrise-commander.git
+[submodule "emacs.d/vendor/smart-tab"]
+	path = emacs.d/vendor/smart-tab
+	url = git://github.com/genehack/smart-tab.git
+[submodule "emacs.d/vendor/iedit"]
+	path = emacs.d/vendor/iedit
+	url = git://github.com/emacsmirror/iedit.git

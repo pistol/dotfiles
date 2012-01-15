@@ -1,5 +1,6 @@
 .DS_Store
 
+emacs.d/bookmarks
 emacs.d/abbrev_defs
 emacs.d/auto-save-list
 emacs.d/backups
@@ -8,4 +9,5 @@ emacs.d/config/private.el
 emacs.d/.org-id-locations
 *_private*
 *.elc
+*/#*#
 #*#
