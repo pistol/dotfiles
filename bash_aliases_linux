@@ -3,6 +3,7 @@
 ############################################################
 
 alias j='qstat'
+alias ls='ls --color'
 
 # Properly dispay disk usage sorted by size
 function dus {
