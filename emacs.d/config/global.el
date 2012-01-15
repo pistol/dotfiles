@@ -37,6 +37,9 @@
 ;; Prevent the annoying beep on errors
 ;; (setq visible-bell t)
 
+;; Turn the alarm totally off
+(setq ring-bell-function 'ignore)
+
 ;; Make sure all backup files only live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
@@ -48,7 +51,7 @@
 (setq truncate-partial-width-windows nil)
 
 ;; For emacsclient
-(server-start)
+;(server-start)
 
 ;; Trailing whitespace is unnecessary
 (add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
@@ -63,3 +66,10 @@
 
 ;; zap-up-to-char, forward-to-word, backward-to-word, etc
 (require 'misc)
+
+;;; cperl-mode is preferred to perl-mode
+;;; "Brevity is the soul of wit" <foo at acm.org>
+(defalias 'perl-mode 'cperl-mode)
+
+;; Maximize decoration (e.g. for dired+)
+(setq font-lock-maximum-decoration t)
