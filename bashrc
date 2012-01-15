@@ -13,24 +13,9 @@ fi
 function prefix_path {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$PATH:" != *":$dir:"* ]]; then
-    PATH="$dir:$PATH"
+    export PATH="$dir:$PATH"
   fi
 }
-
-function postfix_path {
-  local dir=$1
-  if [ -d $dir ] && [[ ":$PATH:" != *":$dir:"* ]]; then
-    PATH="$PATH:$dir"
-  fi
-}
-
-prefix_path /usr/local/bin
-prefix_path /usr/local/sbin
-prefix_path /usr/texbin
-prefix_path ~/bin
-prefix_path ~/bin/private
-
-PATH=.:./bin:${PATH}
 
 ############################################################
 ## MANPATH
@@ -39,15 +24,9 @@ PATH=.:./bin:${PATH}
 function prefix_manpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$MANPATH:" != *":$dir:"* ]]; then
-    MANPATH="$dir:$MANPATH"
+    export MANPATH="$dir:$MANPATH"
   fi
 }
-
-prefix_manpath /usr/X11R6/man
-prefix_manpath /usr/share/man
-prefix_manpath /usr/local/man
-prefix_manpath /usr/local/share/man
-prefix_manpath ~/man
 
 ############################################################
 ## Other paths
@@ -55,34 +34,26 @@ prefix_manpath ~/man
 
 function prefix_cdpath {
   local dir=$1
-  if [ -d "$dir" ] && [[ ":$CDATH:" != *":$dir:"* ]]; then
-    CDPATH="$dir:$CDPATH"
+  if [ -d "$dir" ] && [[ ":$CDPATH:" != *":$dir:"* ]]; then
+    export CDPATH="$dir:$CDPATH"
   fi
 
 }
-
-prefix_cdpath ~/work
-
-CDPATH=.:${CDPATH}
 
 function prefix_ldpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$LD_LIBRARY_PATH:" != *":$dir:"* ]]; then
-    LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
   fi
 }
 
-prefix_ldpath /usr/local/lib
-prefix_ldpath /usr/local/X/lib
-prefix_ldpath /usr/lib
-
-# Remove last ':' from path, if any
-#LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed 's/:$//'`
-
-# Set INFOPATH so it includes users' private info if it exists
-# if [ -d ~/info ]; then
-#   INFOPATH="~/info:${INFOPATH}"
-# fi
+# Convert /home/username or /Users/username to ~/ in PATHs
+# Also remove last ':' if any
+function homify {
+  local path=$1
+  # Need to use ',' delimiter instead of '/' in sed since path contains '/'
+  echo $path | sed "s,$HOME,~,g" | sed 's/:$//'
+}
 
 ############################################################
 ## Terminal behavior
@@ -91,10 +62,10 @@ prefix_ldpath /usr/lib
 # Change the window title of X terminals
 case $TERM in
   xterm*|rxvt|Eterm|eterm)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+    export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
     ;;
   screen)
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+    export PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
     ;;
 esac
 
@@ -118,7 +89,7 @@ else
 fi
 
 # For LS_COLORS template: $ dircolors /etc/DIR_COLORS
-export LS_COLORS="no=00:fi=00:di=01;36:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.svgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.tbz2=01;31:*.bz=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.svg=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:"
+#export LS_COLORS="no=00:fi=00:di=01;36:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.svgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.tbz2=01;31:*.bz=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.svg=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:"
 
 ############################################################
 ## Optional shell behavior
@@ -181,10 +152,37 @@ TERM=xterm-256color
 HOST=$( hostname )
 
 # Disable annoying mail notifications
+shopt -u mailwarn
 unset MAILCHECK
 
 # Default permissions: owner R/W, others no access
 umask 077
+
+############################################################
+## Set PATHs
+############################################################
+#echo "Old PATH=$PATH"
+# Build PATH from scratch
+unset PATH
+
+prefix_path /bin
+prefix_path /usr/bin
+prefix_path /usr/local/bin
+prefix_path /sbin
+prefix_path /usr/sbin
+prefix_path /usr/local/sbin
+prefix_path /usr/texbin
+
+prefix_manpath /usr/X11R6/man
+prefix_manpath /usr/share/man
+prefix_manpath /usr/local/man
+prefix_manpath /usr/local/share/man
+
+prefix_cdpath ~/work
+
+prefix_ldpath /usr/local/lib
+prefix_ldpath /usr/local/X/lib
+prefix_ldpath /usr/lib
 
 ############################################################
 ## OS specific
@@ -204,6 +202,22 @@ case $(uname -s) in
     fi
     ;;
 esac
+
+# Make sure these paths are ahead of custom paths
+prefix_path ~/bin
+prefix_path ~/bin/private
+prefix_path ./bin
+prefix_path .
+
+prefix_manpath ~/man
+
+prefix_cdpath .
+
+# Homify paths
+export PATH=`homify $PATH`
+export MANPATH=`homify $MANPATH`
+export CDPATH=`homify $CDPATH`
+export LD_LIBRARY_PATH=`homify $LD_LIBRARY_PATH`
 
 ############################################################
 ## Bash prompt coloring
@@ -248,5 +262,5 @@ if [ -n "$BASH" ]; then
   txtrst='\e[0m'    # Text Reset
 
   #PS1="\[$bldgrn\]\u\[$txtrst\]@\[$txtgrn\]\H\[$txtrst\]: \[$txtcyn\]\w \[$bldred\]\$\[$txtrst\] "
-  PS1="\[$bldgrn\]\u\[$txtrst\]@\[$txtgrn\]$HOST\[$txtrst\]: \[$txtcyn\]\w \[$bldred\]\$\[$txtrst\] "
+  export PS1="\[$bldgrn\]\u\[$txtrst\]@\[$txtgrn\]$HOST\[$txtrst\]: \[$txtcyn\]\w \[$bldred\]\$\[$txtrst\] "
 fi
