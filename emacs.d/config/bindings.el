@@ -4,10 +4,10 @@
 ;; http://xahlee.org/emacs/keyboard_shortcuts.html
 
 ;; Window manipulation
-(global-set-key [(control kp-6)] 'enlarge-window-horizontally)
-(global-set-key [(control kp-4)] 'shrink-window-horizontally)
-(global-set-key [(control kp-8)] 'enlarge-window)
-(global-set-key [(control kp-2)] 'shrink-window)
+(global-set-key [C-M-right] 'enlarge-window-horizontally)
+(global-set-key [C-M-left] 'shrink-window-horizontally)
+(global-set-key [C-M-up] 'enlarge-window)
+(global-set-key [C-M-down] 'shrink-window)
 
 ;; Find stuff
 (global-set-key [(f2)]              'ack-default-directory)
@@ -91,3 +91,14 @@
 
 ;; Tags
 (global-set-key (kbd "M-,") 'pop-tag-mark) ; was tags-loop-continue
+
+;; Vim-like duplicate current line
+(global-set-key (kbd "C-c C-d") 'duplicate-line)
+
+;; move-text bindings, move line/region using keys
+(global-set-key [M-S-up] 'move-text-up)
+(global-set-key [M-S-down] 'move-text-down)
+
+;; iedit mode, mark all occurences of word at point and allow edit
+(define-key global-map (kbd "C-;") 'iedit-mode)
+(define-key isearch-mode-map (kbd "C-;") 'iedit-mode)

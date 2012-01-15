@@ -8,7 +8,7 @@
          (normal (concat "~/.emacs.d/vendor/" file))
          (suffix (concat normal ".el"))
          (personal (concat "~/.emacs.d/config/" file))
-	 (found nil))
+   (found nil))
     (cond
      ((file-directory-p normal) (add-to-list 'load-path normal) (set 'found t))
      ((file-directory-p suffix) (add-to-list 'load-path suffix) (set 'found t))
@@ -103,10 +103,48 @@ point and around or after mark are interchanged."
 (defun rotate-windows ()
   (interactive)
   (let ((start-positions (rotate-left (mapcar 'window-start (window-list))))
-	(buffers (rotate-left (mapcar 'window-buffer (window-list)))))
+  (buffers (rotate-left (mapcar 'window-buffer (window-list)))))
     (mapcar* (lambda (window  buffer pos)
-	       (set-window-buffer window buffer)
-	       (set-window-start window pos))
-	     (window-list)
-	     buffers
-	     start-positions)))
+         (set-window-buffer window buffer)
+         (set-window-start window pos))
+       (window-list)
+       buffers
+       start-positions)))
+
+;; Simple Vim-like duplicate line
+;; http://stackoverflow.com/questions/88399/how-do-i-duplicate-a-whole-line-in-emacs
+
+(defun duplicate-line (arg)
+  "Duplicate current line, leaving point in lower line."
+  (interactive "*p")
+
+  ;; save the point for undo
+  (setq buffer-undo-list (cons (point) buffer-undo-list))
+
+  ;; local variables for start and end of line
+  (let ((bol (save-excursion (beginning-of-line) (point)))
+        eol)
+    (save-excursion
+
+      ;; don't use forward-line for this, because you would have
+      ;; to check whether you are at the end of the buffer
+      (end-of-line)
+      (setq eol (point))
+
+      ;; store the line and disable the recording of undo information
+      (let ((line (buffer-substring bol eol))
+            (buffer-undo-list t)
+            (count arg))
+        ;; insert the line arg times
+        (while (> count 0)
+          (newline)         ;; because there is no newline in 'line'
+          (insert line)
+          (setq count (1- count)))
+        )
+
+      ;; create the undo information
+      (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list)))
+    ) ; end-of-let
+
+  ;; put the point in the lowest line and return
+  (next-line arg))

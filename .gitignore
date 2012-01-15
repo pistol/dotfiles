@@ -11,3 +11,5 @@ emacs.d/.org-id-locations
 *.elc
 */#*#
 #*#
+
+emacs.d/config/custom.el
