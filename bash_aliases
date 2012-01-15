@@ -17,13 +17,22 @@ alias ll="ls -lh"
 alias la="ls -a"
 alias lal="ls -alh"
 
-alias lx='ls -lXB'              # sort by extension
-alias lk='ls -lSr'              # sort by size
-alias lc='ls -lcr'              # sort by change time
-alias lu='ls -lur'              # sort by access time
-alias lr='ls -laR'              # recursive ls
-alias lt='ls -ltr'              # sort by date
-alias lm='ls -al |more'         # pipe through 'more'
+alias lx="ls -lXB"              # sort by extension
+alias lk="ls -lSr"              # sort by size
+alias lc="ls -lcr"              # sort by change time
+alias lu="ls -lur"              # sort by access time
+alias lr="ls -laR"              # recursive ls
+alias lt="ls -ltr"              # sort by date
+alias lm="ls -al |more"         # pipe through 'more'
+
+############################################################
+## Emacs
+############################################################
+# -a '' starts emacs in daemon mode if not already started
+alias et="emacsclient -a '' -t"
+alias eg="emacsclient -a '' -c -n"
+alias e="et"
+alias ed="emacs --daemon"
 
 ############################################################
 ## Git
@@ -101,6 +110,10 @@ function path {
   echo $path | tr ':' '\n'
 }
 alias p='path'
+alias type='type -a'
+alias t='type'
+alias which='type'
+alias ..='cd ..'
 
 alias grep='GREP_COLOR="1;37;41" grep --color=auto'
 alias grep='GREP_COLOR="1;37;41" grep --color=auto'
@@ -115,7 +128,7 @@ alias ve="vim ~/.vimrc"
 alias br="source ~/.bashrc"
 
 # Free space, human readable
-alias df="df -h"
+alias df='df -h'
 alias f='fg'
 alias z='suspend'
 alias \!='history'
@@ -173,6 +186,51 @@ function serve {
   local port=$1
   : ${port:=3000}
   ruby -rwebrick -e"s = WEBrick::HTTPServer.new(:Port => $port, :DocumentRoot => Dir.pwd); trap(%q(INT)) { s.shutdown }; s.start"
+}
+
+function swap()  # Swap 2 filenames around, if they exist
+{                #(from Uzi's bashrc).
+    local TMPFILE=tmp.$$
+
+    [ $# -ne 2 ] && echo "swap: 2 arguments needed" && return 1
+    [ ! -e $1 ] && echo "swap: $1 does not exist" && return 1
+    [ ! -e $2 ] && echo "swap: $2 does not exist" && return 1
+
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
+}
+
+# Find a file with a pattern in name:
+function ff() { find . -type f -iname '*'$*'*' -ls ; }
+
+# Find a file with pattern $1 in name and Execute $2 on it:
+function fe()
+{ find . -type f -iname '*'${1:-}'*' -exec ${2:-file} {} \;  ; }
+
+# Find a pattern in a set of files and highlight them:
+# (needs a recent version of egrep)
+function fstr()
+{
+    OPTIND=1
+    local case=""
+    local usage="fstr: find string in files.
+Usage: fstr [-i] \"pattern\" [\"filename pattern\"] "
+    while getopts :it opt
+    do
+        case "$opt" in
+        i) case="-i " ;;
+        *) echo "$usage"; return;;
+        esac
+    done
+    shift $(( $OPTIND - 1 ))
+    if [ "$#" -lt 1 ]; then
+        echo "$usage"
+        return;
+    fi
+    find . -type f -name "${2:-*}" -print0 | \
+    xargs -0 egrep --color=always -sn ${case} "$1" 2>&- | more
+
 }
 
 ############################################################
