@@ -113,7 +113,6 @@ point and around or after mark are interchanged."
 
 ;; Simple Vim-like duplicate line
 ;; http://stackoverflow.com/questions/88399/how-do-i-duplicate-a-whole-line-in-emacs
-
 (defun duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
@@ -148,3 +147,53 @@ point and around or after mark are interchanged."
 
   ;; put the point in the lowest line and return
   (next-line arg))
+
+
+;; Linum: Select lines my clicking
+;; Select lines by click-dragging on the margin. Tested with GNU Emacs 23.3
+;; http://www.emacswiki.org/emacs/LineNumbers
+(defvar *linum-mdown-line* nil)
+
+(defun line-at-click ()
+  (save-excursion
+  (let ((click-y (cdr (cdr (mouse-position))))
+      (line-move-visual-store line-move-visual))
+    (setq line-move-visual t)
+    (goto-char (window-start))
+    (next-line (1- click-y))
+    (setq line-move-visual line-move-visual-store)
+    ;; If you are using tabbar substitute the next line with
+    ;; (line-number-at-pos))))
+    (1+ (line-number-at-pos)))))
+
+(defun md-select-linum ()
+  (interactive)
+  (goto-line (line-at-click))
+  (set-mark (point))
+  (setq *linum-mdown-line*
+    (line-number-at-pos)))
+
+(defun mu-select-linum ()
+  (interactive)
+  (when *linum-mdown-line*
+  (let (mu-line)
+    ;; (goto-line (line-at-click))
+    (setq mu-line (line-at-click))
+    (goto-line (max *linum-mdown-line* mu-line))
+    (set-mark (line-end-position))
+    (goto-line (min *linum-mdown-line* mu-line))
+    (setq *linum-mdown*
+      nil))))
+
+;; Use ido in ibuffer
+;; ibuffer mode doesn’t come with an option to use ido-find-file, so here’s a simple adaptation of ibuffer-find-file that uses ido instead of read-file:
+;; http://www.emacswiki.org/emacs-es/InteractivelyDoThings
+(defun ibuffer-ido-find-file ()
+  "Like `ido-find-file', but default to the directory of the buffer at point."
+  (interactive
+   (let ((default-directory (let ((buf (ibuffer-current-buffer)))
+            (if (buffer-live-p buf)
+          (with-current-buffer buf
+            default-directory)
+        default-directory))))
+     (ido-find-file-in-dir default-directory))))
