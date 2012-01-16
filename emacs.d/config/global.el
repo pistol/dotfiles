@@ -16,13 +16,19 @@
 ;; Display line and column numbers
 (setq line-number-mode    t)
 (setq column-number-mode  t)
+(global-linum-mode (quote toggle))
 
 ;; Modeline info
 (display-time-mode 1)
 ;; (display-battery-mode 1)
 
 ;; Small fringes
-(set-fringe-mode '(1 . 1))
+(set-fringe-mode '(5 . 5))
+
+;; Nice justify but too slow
+;(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat " %" (number-to-string w) "d ")) line) 'face 'linum)))
+
+(setq linum-format " %d ")
 
 ;; Emacs gurus don't need no stinking scroll bars
 (when (fboundp 'toggle-scroll-bar)
@@ -73,3 +79,5 @@
 
 ;; Maximize decoration (e.g. for dired+)
 (setq font-lock-maximum-decoration t)
+ ; keep a list of recently opened files
+(recentf-mode 1)
