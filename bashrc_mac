@@ -1,5 +1,16 @@
 # Add global mac settings here
 
+# Remove Mac .local domain
+HOST=$(expr $HOST | sed -n 's/\.local//p')
+
+if [ -e /usr/libexec/java_home ]; then
+  JAVA_HOME=$(/usr/libexec/java_home)
+fi
+
+prefix_path /usr/X11/bin
+prefix_path /usr/local/git/bin
+# prefix_path /Applications/Emacs.app/Contents/MacOS/bin
+
 # Load private settings
 if [ -e ~/.bashrc_private_mac ]; then
   . ~/.bashrc_private_mac

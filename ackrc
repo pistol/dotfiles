@@ -22,3 +22,5 @@ erb=erb
 --type-add
 ruby=thor
 
+--type-set
+smali=smali

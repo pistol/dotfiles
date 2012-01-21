@@ -1,52 +1,34 @@
 ;;; pistol-theme.el --- Custom face theme for Emacs
-
-;; Copyright (C) 2010 Pierre Karashchuk.
-
-;; This file is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
-
-;;; Code:
-
 (deftheme pistol
   "Based on vim leo theme.")
 
 (custom-theme-set-faces
  'pistol
- '(default                      ((t ( :background "Black"      :foreground "White"                                  ))))
- '(shadow                       ((t ( :background "#1a1a1a"    :foreground "DarkGray"                               ))))
- '(cursor                       ((t ( :background "#dc143c"    :foreground "White"                                  ))))
- '(region                       ((t ( :background "#333333"                             :weight normal              ))))
- '(mode-line                    ((t ( :background "#0052a3"    :foreground "White"                                  ))))
- '(mode-line-inactive           ((t ( :background "#001f3d"    :foreground "Gray"                                   ))))
- '(fringe                       ((t ( :background "Black"      :foreground "DodgerBlue"                             ))))
- '(hl-line                      ((t ( :background "#0052a3"                                                         ))))
- '(minibuffer-prompt            ((t (                          :foreground "Green"      :weight normal              ))))
- '(font-lock-builtin-face       ((t (                          :foreground "DodgerBlue" :weight normal              ))))
- '(font-lock-comment-face       ((t (                          :foreground "DarkGray"   :weight normal              ))))
- '(font-lock-constant-face      ((t (                          :foreground "DarkOrange" :weight normal              ))))
- '(font-lock-function-name-face ((t (                          :foreground "Gold"       :weight normal              ))))
- '(font-lock-keyword-face       ((t (                          :foreground "Red"        :weight normal              ))))
- '(font-lock-string-face        ((t (                          :foreground "Orange"     :weight normal              ))))
- '(font-lock-type-face          ((t (                          :foreground "Green"      :weight normal              ))))
- '(font-lock-variable-name-face ((t (                          :foreground "Orchid"     :weight normal              ))))
- '(font-lock-warning-face       ((t (                          :foreground "Crimson"    :weight normal              ))))
- '(font-lock-preprocessor-face  ((t (                          :foreground "LawnGreen"  :weight normal              ))))
- '(isearch                      ((t ( :background "DarkViolet" :foreground "White"      :weight normal              ))))
- '(lazy-highlight               ((t ( :background "Orchid"                              :weight normal              ))))
- '(link                         ((t (                          :foreground "Yellow"     :weight normal :underline t ))))
- '(link-visited                 ((t (                          :foreground "#ff871f"    :weight normal :underline t ))))
- '(button                       ((t (                          :foreground "Lime"       :weight normal :underline t ))))
- '(header-line                  ((t ( :background "#e5e5e5"    :foreground "#1a1a1a"    :weight normal              ))))
+ '(default                      ((t ( :background "Black"      :foreground "White"      :weight normal :underline nil ))))
+ '(shadow                       ((t ( :background "#101010"    :foreground "DarkGray"   :weight normal :underline nil ))))
+ '(cursor                       ((t ( :background "#cc0033"    :foreground "White"      :weight normal :underline nil ))))
+ '(region                       ((t ( :background "#333333"    :foreground nil          :weight normal :underline nil ))))
+ '(mode-line                    ((t ( :background "#0052a3"    :foreground "White"      :weight normal :underline nil ))))
+ '(mode-line-inactive           ((t ( :background "#001f3d"    :foreground "Gray"       :weight normal :underline nil ))))
+ '(fringe                       ((t ( :background "Black"      :foreground "DodgerBlue" :weight normal :underline nil ))))
+ '(hl-line                      ((t ( :background "#101010"    :foreground nil                         :underline nil ))))
+ '(minibuffer-prompt            ((t ( :background nil          :foreground "Green"      :weight normal :underline nil ))))
+ '(font-lock-builtin-face       ((t ( :background nil          :foreground "DodgerBlue" :weight normal :underline nil ))))
+ '(font-lock-comment-face       ((t ( :background nil          :foreground "DarkGray"   :weight normal :underline nil ))))
+ '(font-lock-constant-face      ((t ( :background nil          :foreground "DarkOrange" :weight normal :underline nil ))))
+ '(font-lock-function-name-face ((t ( :background "Black"      :foreground "#ff3300"    :weight normal :underline nil ))))
+ '(font-lock-keyword-face       ((t ( :background nil          :foreground "Red"        :weight normal :underline nil ))))
+ '(font-lock-string-face        ((t ( :background "#101010"    :foreground "Orchid"     :weight normal :underline nil ))))
+ '(font-lock-type-face          ((t ( :background nil          :foreground "Green"      :weight normal :underline nil ))))
+ '(font-lock-variable-name-face ((t ( :background nil          :foreground "Orange"     :weight normal :underline nil ))))
+ '(font-lock-warning-face       ((t ( :background nil          :foreground "Magenta"    :weight normal :underline nil ))))
+ '(font-lock-preprocessor-face  ((t ( :background nil          :foreground "LawnGreen"  :weight normal :underline nil ))))
+ '(isearch                      ((t ( :background "DarkViolet" :foreground "White"      :weight normal :underline nil ))))
+ '(lazy-highlight               ((t ( :background "Orchid"     :foreground nil          :weight normal :underline nil ))))
+ '(link                         ((t ( :background nil          :foreground "Yellow"     :weight normal :underline t   ))))
+ '(link-visited                 ((t ( :background nil          :foreground "#ff871f"    :weight normal :underline t   ))))
+ '(button                       ((t ( :background nil          :foreground "Lime"       :weight normal :underline nil ))))
+ '(header-line                  ((t ( :background "#e5e5e5"    :foreground "#1a1a1a"    :weight normal :underline nil ))))
 )
 
 (provide-theme 'pistol)

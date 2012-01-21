@@ -16,13 +16,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hippie expand.  Groovy vans with tie-dyes.
 
-(setq hippie-expand-try-functions-list
-      '(yas/hippie-try-expand
-        try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-complete-file-name
-        try-complete-lisp-symbol))
+;; (setq hippie-expand-try-functions-list
+;;       '(;yas/hippie-try-expand
+;;         tie-dyes.ry-expand-dabbrev
+;;         try-expand-dabbrev-all-buffers
+;;         try-expand-dabbrev-from-kill
+;;         try-complete-file-name
+;;         try-complete-lisp-symbol))
 
 ;; disable smart-tab when using sunrirse-commander
 (add-to-list 'smart-tab-disabled-major-modes 'sr-mode)

@@ -1,7 +1,7 @@
 ;;; Generic emacs settings I cannot live without
 
-;; Use command as the meta key
-(setq ns-command-modifier (quote meta))
+;; Use command as the meta key (Only in GUI)
+(setq ns-command-modifier 'meta)
 
 ;; Don't show the startup screen
 (setq inhibit-startup-message t)
@@ -13,12 +13,17 @@
 ;; "C-h d transient" for more info
 (setq transient-mark-mode t)
 
-;; Display line and column numbers
-(setq line-number-mode    t)
+;; Display column numbers in modeline
 (setq column-number-mode  t)
-(global-linum-mode (quote toggle))
 
-;; Modeline info
+;; Line numbers are only for Vi-users
+(global-linum-mode 0)
+(linum-mode 0)
+
+;; Highlight current line
+(global-hl-line-mode t)
+
+;; Show time in modeline
 (display-time-mode 1)
 ;; (display-battery-mode 1)
 
@@ -28,6 +33,7 @@
 ;; Nice justify but too slow
 ;(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat " %" (number-to-string w) "d ")) line) 'face 'linum)))
 
+;; Format for line numbers on left
 (setq linum-format " %d ")
 
 ;; Emacs gurus don't need no stinking scroll bars
@@ -35,7 +41,7 @@
   (toggle-scroll-bar -1))
 
 ;; Explicitly show the end of a buffer
-(set-default 'indicate-empty-lines t)
+;(toggle-indicate-empty-lines)
 
 ;; Line-wrapping
 (set-default 'fill-column 80)
@@ -52,12 +58,9 @@
 ;; Gotta see matching parens
 (show-paren-mode t)
 
-;; Don't truncate lines
-(setq truncate-lines t)
+;; Truncate, do not wrap lines
+(setq-default truncate-lines t)
 (setq truncate-partial-width-windows nil)
-
-;; For emacsclient
-;(server-start)
 
 ;; Trailing whitespace is unnecessary
 (add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
@@ -70,14 +73,59 @@
 (setq ispell-list-command "list")
 (setq ispell-extra-args '("--sug-mode=ultra"))
 
+;; Maximize decoration (e.g. for dired+)
+(setq font-lock-maximum-decoration t)
+
+;; Smooth scrolling
+;; http://stackoverflow.com/questions/1128927/how-to-scroll-line-by-line-in-gnu-emacs
+(setq scroll-step            1
+      scroll-conservatively  10000)
+
+;; (if (equal "xterm" (tty-type))
+;;     (xterm-fix-keys)
+;; )
+
+;; (defadvice terminal-init-xterm (after select-shift-up activate)
+;;   (xterm-fix-keys)
+;; )
+
+;; fix shift-up mark select in xterm
+;; http://lists.gnu.org/archive/html/help-gnu-emacs/2011-05/msg00211.html
+(if (equal "xterm" (tty-type))
+      (define-key input-decode-map "\e[1;2A" [S-up]))
+
+(defadvice terminal-init-xterm (after select-shift-up activate)
+  (define-key input-decode-map "\e[1;2A" [S-up]))
+
+;; keep a list of recently opened files
+(recentf-mode 1)
+
 ;; zap-up-to-char, forward-to-word, backward-to-word, etc
 (require 'misc)
 
-;;; cperl-mode is preferred to perl-mode
-;;; "Brevity is the soul of wit" <foo at acm.org>
+;; cperl-mode is preferred to perl-mode
 (defalias 'perl-mode 'cperl-mode)
 
-;; Maximize decoration (e.g. for dired+)
-(setq font-lock-maximum-decoration t)
- ; keep a list of recently opened files
-(recentf-mode 1)
+;; For emacsclient
+;(server-start)
+
+;; Enable mouse in xterm
+(unless window-system
+  (xterm-mouse-mode t)
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t)
+)
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(defvar backup-dir (expand-file-name "~/.emacs.d/backups/"))
+(defvar autosave-dir (expand-file-name "~/.emacs.d/autosaves/"))
+(setq backup-directory-alist (list (cons ".*" backup-dir)))
+(setq auto-save-list-file-prefix autosave-dir)
+(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosaves/" t)
+(make-directory "~/.emacs.d/backups/" t)
+
+;; Show keys as you type shortcuts
+(setq echo-keystrokes 0.1)

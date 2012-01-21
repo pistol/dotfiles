@@ -76,9 +76,6 @@
 [submodule "emacs.d/vendor/textmate.el"]
 	path = emacs.d/vendor/textmate.el
 	url = https://github.com/defunkt/textmate.el.git
-[submodule "emacs.d/vendor/shell-pop"]
-	path = emacs.d/vendor/shell-pop
-	url = https://github.com/rmm5t/shell-pop.git
 [submodule "emacs.d/vendor/mo-git-blame"]
 	path = emacs.d/vendor/mo-git-blame
 	url = https://github.com/mbunkus/mo-git-blame.git
@@ -118,3 +115,21 @@
 [submodule "emacs.d/vendor/autopair"]
 	path = emacs.d/vendor/autopair
 	url = git://github.com/emacsmirror/autopair.git
+[submodule "emacs.d/vendor/win-switch"]
+	path = emacs.d/vendor/win-switch
+	url = git://github.com/emacsmirror/win-switch.git
+[submodule "emacs.d/vendor/icicles"]
+	path = emacs.d/vendor/icicles
+	url = git://github.com/emacsmirror/icicles.git
+[submodule "emacs.d/vendor/thingatpt+"]
+	path = emacs.d/vendor/thingatpt+
+	url = git://github.com/emacsmirror/thingatpt-plus.git
+[submodule "emacs.d/vendor/ido-ubiquitous"]
+	path = emacs.d/vendor/ido-ubiquitous
+	url = git://github.com/DarwinAwardWinner/ido-ubiquitous.git
+[submodule "emacs.d/vendor/mk-project"]
+	path = emacs.d/vendor/mk-project
+	url = git://github.com/mattkeller/mk-project.git
+[submodule "emacs.d/vendor/shell-pop"]
+	path = emacs.d/vendor/shell-pop
+	url = git://github.com/emacsmirror/shell-pop.git

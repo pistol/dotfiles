@@ -269,6 +269,16 @@
    )
 )
 
+(defun smali-find-tag-default ()
+  (let ((tag (find-tag-default)))
+    (or (and tag
+             (string-match "^L\\(\\(?:\\w+/?\\)+\\)" tag)
+;             (string-match "\\(facebook\\)" tag)
+             (match-string-no-properties 1 tag))
+        tag)))
+
+(put 'smali-mode 'find-tag-default-function 'smali-find-tag-default)
+
 (defmacro save-match-data (&rest body)
   "Execute BODY, preserving any pre-existing match data"
   (let ((v (gensym)))
