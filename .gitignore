@@ -12,5 +12,8 @@ emacs.d/.org-id-locations
 *.elc
 */#*#
 #*#
+/.hg/*
+*/.hg/*
+.hgignore
 
 emacs.d/config/custom.el
