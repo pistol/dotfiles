@@ -103,6 +103,15 @@ alias svn-clean='find . -name .svn -print0 | xargs -0 rm -rf'
 ## Miscellaneous
 ############################################################
 
+# Display prompt line (user@host ~/folder (git_status)) only when changing dir
+# http://superuser.com/questions/33914/why-doesnt-echo-support-e-escape-when-using-the-e-argument-in-macosx
+function cd_color {
+  cd $*
+  echo $'\e[0;32m'$USER$'\e[0m@\e[1;32m'$HOST$': \e[0;34m'$(homify $PWD)$'\e[0;31m'$(__git_ps1)
+  # export PS1='\[\e[1;31m\$\e[0m\] '
+}
+alias cd='cd_color'
+
 # Display $PATH dirs one per line
 function path {
   local path=$1
@@ -127,11 +136,10 @@ alias ve="vim ~/.vimrc"
 # Reload bash settings
 alias br="source ~/.bashrc"
 
-# Free space, human readable
+# # Free space, human readable
 alias df='df -h'
 alias f='fg'
 alias z='suspend'
-alias \!='history'
 
 # List open ports per process
 #ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | awk '"'"'{print $1, $8, $9}'"'"' | sort -f'
