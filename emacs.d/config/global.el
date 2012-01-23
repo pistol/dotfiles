@@ -129,3 +129,6 @@
 
 ;; Show keys as you type shortcuts
 (setq echo-keystrokes 0.1)
+
+;; Auto Yes to "Symbolic link to SVN-controlled source file; follow link? "
+(setq vc-follow-symlinks t)

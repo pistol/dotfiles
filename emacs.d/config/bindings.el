@@ -13,8 +13,11 @@
 (define-key my-keys-minor-mode-map (kbd "C-M-<down>")    'shrink-window)
 
 ;; Compilation
-(define-key my-keys-minor-mode-map (kbd "M-<prior>")      'previous-error)
-(define-key my-keys-minor-mode-map (kbd "M-<next>")       'next-error)
+(define-key my-keys-minor-mode-map (kbd "M-<prior>")     'previous-error)
+(define-key my-keys-minor-mode-map (kbd "M-<next>")      'next-error)
+
+;; Most helpful help command
+(define-key my-keys-minor-mode-map (kbd "<f1>")          'apropos)
 
 ;; Find stuff
 (define-key my-keys-minor-mode-map (kbd "<f2>")          'ack-default-directory)

@@ -6,7 +6,7 @@
  'pistol
  '(default                      ((t ( :background "Black"       :foreground "White"      :weight normal :underline nil ))))
  '(shadow                       ((t ( :background "#101010"     :foreground "DarkGray"   :weight normal :underline nil ))))
- '(highlight                    ((t ( :background "#cc0033"     :foreground "White"      :weight normal :underline nil ))))
+ '(highlight                    ((t ( :background "#cc0033"     :foreground nil                         :underline nil ))))
  ;; '(cursor                       ((t ( :background "#cc0033"     :foreground "White"      :weight normal :underline nil ))))
  '(cursor                       ((t ( :background "Green"       :foreground "Black"      :weight normal :underline nil ))))
  '(region                       ((t ( :background "#333333"     :foreground nil          :weight normal :underline nil ))))
