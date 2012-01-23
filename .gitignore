@@ -13,6 +13,7 @@ emacs.d/.org-id-locations
 emacs.d/autosaves
 emacs.d/cache
 emacs.d/eshell
+emacs.d/framegeometry
 
 *_private*
 *.elc
