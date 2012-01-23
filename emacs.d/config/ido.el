@@ -5,6 +5,9 @@
 (ido-everywhere t)
 (ido-ubiquitous t)
 
+;; Emacs doesn't make this auto
+(make-directory "~/.emacs.d/cache/" t)
+
 (setq
  ido-save-directory-list-file "~/.emacs.d/cache/ido.last"
 
