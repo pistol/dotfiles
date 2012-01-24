@@ -215,8 +215,8 @@ if [ -n "$BASH" ]; then
   export GIT_PS1_SHOWUNTRACKEDFILES=true
   # export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOST\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]"$(__git_ps1)"\n\[$bldred\]\$\[$txtrst\] "
   # export PS1='\[\e[0;32m\u\e[0m@\e[1;32m$HOST\e[0m: \e[0;34m\w\e[0m\e[0;31m$(__git_ps1 " (%s)")\n\e[1;31m\$\e[0m\] '
-  # export PS1='\[\e[0;32m\u\e[0m@\e[1;32m$HOST\e[0m: \e[0;34m\w\e[0m\e[0;31m$(__git_ps1)\n\e[1;31m\$\e[0m\] '
-  export PS1="\[$bldred\]\$\[$txtrst\] "
+  export PS1='\[\e[0;32m\u\e[0m@\e[1;32m$HOST\e[0m: \e[0;34m\w\e[0m\e[0;31m$(__git_ps1)\n\e[1;31m\$\e[0m\] '
+  # export PS1="\[$bldred\]\$\[$txtrst\] "
 fi
 
 ############################################################
@@ -259,4 +259,4 @@ unset MAILCHECK
 umask 077
 
 # Needed to properly display prompt line (user@host ~/folder (git_status)) right after shell starts
-cd .
+# cd .

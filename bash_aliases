@@ -110,7 +110,7 @@ function cd_color {
   echo $'\e[0;32m'$USER$'\e[0m@\e[1;32m'$HOST$': \e[0;34m'$(homify $PWD)$'\e[0;31m'$(__git_ps1)
   # export PS1='\[\e[1;31m\$\e[0m\] '
 }
-alias cd='cd_color'
+# alias cd='cd_color'
 
 # Display $PATH dirs one per line
 function path {
