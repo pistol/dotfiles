@@ -30,4 +30,3 @@ termcapinfo xterm* ti@:te@
 
 # fix backspace
 termcapinfo xterm* 'bc@:bs@'
-

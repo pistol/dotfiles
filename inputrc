@@ -1,0 +1,39 @@
+$include /etc/inputrc
+
+set +o histexpand
+
+# enable case-insensitive TAB-completion (for file names)
+set completion-ignore-case on
+
+# enable one-tab completion
+set show-all-if-ambiguous on
+
+# turn on inline mode for tab completion
+# "\t": menu-complete
+
+# add the missing slash when tab-completing symbolic links to directories
+set mark-symlinked-directories on
+
+# When listing possible file completions, put / after directory names and * after programs
+set visible-stats on
+
+"\M-s": menu-complete
+
+# Use Ctrl + Arrows to move between words
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+# Use Meta + Arrows to move between words
+"\e[1;9C": forward-word
+"\e[1;9D": backward-word
+
+"\e[3;5~": kill-word
+"\e[3;9~": kill-word
+Meta-Control-h:	backward-kill-word
+
+# Macros that are convenient for shell interaction
+$if Bash
+  # edit the path
+  Space: magic-space
+  "\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+$endif

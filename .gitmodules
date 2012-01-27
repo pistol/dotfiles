@@ -133,3 +133,6 @@
 [submodule "emacs.d/vendor/shell-pop"]
   path = emacs.d/vendor/shell-pop
   url = git://github.com/emacsmirror/shell-pop.git
+[submodule "emacs.d/vendor/ack-and-a-half"]
+	path = emacs.d/vendor/ack-and-a-half
+	url = git://github.com/jhelwig/ack-and-a-half.git

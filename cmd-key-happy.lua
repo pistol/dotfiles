@@ -12,16 +12,21 @@ end
 
 -- The set of global shortcuts we don't want to swap cmd/alt.
 
-global_excludes = Set{ "shift-cmd-tab",
-                       "cmd-tab",
-                       "cmd-space",
+global_excludes = Set{ "shift-cmd-tab", -- switch apps
+                       "cmd-tab",       -- swith apps
+                       "cmd-space",     -- spotlight
                        "shift-cmd-space",
-                       "cmd-,",
-                       "shift-cmd-x",
-                       "control-cmd-left",
-                       "control-cmd-right",
-                       "control-cmd-up",
-                       "control-cmd-down",
+                       "cmd-,",       -- settings
+                       "cmd-c",       -- copy
+                       "cmd-v",       -- paste
+                       "cmd-`",       -- switch windows
+                       "alt-`",       -- visor
+                       "shift-cmd-`", -- switch windows
+                       "shift-cmd-x", -- divvy
+                       "control-cmd-left",  -- divvy
+                       "control-cmd-right", -- divvy
+                       "control-cmd-up",    -- divvy
+                       "control-cmd-down",  -- divvy
                      }
 
 -- The set of apps we want to consider swapping keys for, with some
@@ -43,10 +48,6 @@ terminal_excludes = Set{ "shift-cmd-[",
 apps = {
    Terminal = { exclude = terminal_excludes },
    iTerm    = { exclude = Set{
-                   "cmd-c", -- copy
-                   "cmd-v", -- paste
-                   "cmd-`", -- switch windows
-                   "shift-cmd-`", -- switch windows
                    -- "shift-cmd-[", -- switch to prev tab
                    -- "shift-cmd-]", -- switch to next tab
                    -- "cmd-w", -- close window

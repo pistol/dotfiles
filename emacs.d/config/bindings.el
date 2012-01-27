@@ -78,6 +78,10 @@
 ;; Repeat
 (define-key my-keys-minor-mode-map (kbd "C-z")           'repeat) ; was suspend-frame
 
+;; Easier delete forward word
+(define-key my-keys-minor-mode-map (kbd "<C-kp-delete>")   'kill-word)
+(define-key my-keys-minor-mode-map (kbd "<M-kp-delete>")   'kill-word)
+
 ;; Mac OS X conventions
 (define-key my-keys-minor-mode-map (kbd "M-a")           'mark-whole-buffer) ; was backward-sentence .
 ;; Easy save

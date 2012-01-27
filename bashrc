@@ -130,9 +130,11 @@ prefix_manpath /usr/local/share/man
 
 prefix_cdpath ~/work
 
-prefix_ldpath /usr/local/lib
-prefix_ldpath /usr/local/X/lib
+unset LD_LIBRARY_PATH
+prefix_ldpath /lib
 prefix_ldpath /usr/lib
+prefix_ldpath /usr/local/X/lib
+prefix_ldpath /usr/local/lib
 
 ############################################################
 ## OS specific
@@ -166,9 +168,10 @@ prefix_manpath ~/man
 
 # Homify paths
 export PATH=`homify $PATH`
-export MANPATH=`homify $MANPATH`
-export CDPATH=`homify $CDPATH`
-export LD_LIBRARY_PATH=`homify $LD_LIBRARY_PATH`
+# Homify MANPATH seems to not load man pages correctly in ~
+# export MANPATH=`homify $MANPATH`
+# export CDPATH=`homify $CDPATH`
+# export LD_LIBRARY_PATH=`homify $LD_LIBRARY_PATH`
 
 ############################################################
 ## Bash prompt coloring
@@ -213,9 +216,7 @@ if [ -n "$BASH" ]; then
 
   export GIT_PS1_SHOWDIRTYSTATE=true
   export GIT_PS1_SHOWUNTRACKEDFILES=true
-  # export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOST\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]"$(__git_ps1)"\n\[$bldred\]\$\[$txtrst\] "
-  # export PS1='\[\e[0;32m\u\e[0m@\e[1;32m$HOST\e[0m: \e[0;34m\w\e[0m\e[0;31m$(__git_ps1 " (%s)")\n\e[1;31m\$\e[0m\] '
-  export PS1='\[\e[0;32m\u\e[0m@\e[1;32m$HOST\e[0m: \e[0;34m\w\e[0m\e[0;31m$(__git_ps1)\n\e[1;31m\$\e[0m\] '
+  export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOST\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]"$(__git_ps1)"\n\[$bldred\]\$\[$txtrst\] "
   # export PS1="\[$bldred\]\$\[$txtrst\] "
 fi
 

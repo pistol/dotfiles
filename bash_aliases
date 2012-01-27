@@ -23,7 +23,7 @@ alias lc="ls -lcr"              # sort by change time
 alias lu="ls -lur"              # sort by access time
 alias lr="ls -laR"              # recursive ls
 alias lt="ls -ltr"              # sort by date
-alias lm="ls -al |more"         # pipe through 'more'
+alias lm="ls -al |less"         # pipe through 'less'
 
 ############################################################
 ## Emacs
@@ -123,6 +123,10 @@ alias type='type -a'
 alias t='type'
 alias which='type'
 alias ..='cd ..'
+alias envs='env | sort'
+
+# Fixes color display
+alias less='less -R'
 
 alias grep='GREP_COLOR="1;37;41" grep --color=auto'
 alias grep='GREP_COLOR="1;37;41" grep --color=auto'
