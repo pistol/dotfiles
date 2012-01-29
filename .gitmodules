@@ -19,9 +19,6 @@
 [submodule "emacs.d/vendor/psvn"]
   path = emacs.d/vendor/psvn
   url = git://github.com/emacsmirror/psvn.git
-[submodule "emacs.d/vendor/yasnippet"]
-  path = emacs.d/vendor/yasnippet
-  url = git://github.com/emacsmirror/yasnippet.git
 [submodule "emacs.d/vendor/yasnippets-rails"]
   path = emacs.d/vendor/yasnippets-rails
   url = git://github.com/eschulte/yasnippets-rails.git
@@ -134,5 +131,5 @@
   path = emacs.d/vendor/shell-pop
   url = git://github.com/emacsmirror/shell-pop.git
 [submodule "emacs.d/vendor/ack-and-a-half"]
-	path = emacs.d/vendor/ack-and-a-half
-	url = git://github.com/jhelwig/ack-and-a-half.git
+  path = emacs.d/vendor/ack-and-a-half
+  url = git://github.com/jhelwig/ack-and-a-half.git
