@@ -103,6 +103,8 @@
 ;; Home/End to Start and End of line instead of Start/End of buffer
 ;(define-key my-keys-minor-mode-map (kbd "<home>")        'beginning-of-line)
 ;(define-key my-keys-minor-mode-map (kbd "<end>")         'end-of-line)
+(define-key my-keys-minor-mode-map (kbd "<home>")        'beginning-of-buffer)
+(define-key my-keys-minor-mode-map (kbd "<end>")         'end-of-buffer)
 
 ;; Improved navigation and editing (assumes misc.el)
 (define-key my-keys-minor-mode-map (kbd "M-Z")           'zap-up-to-char)
