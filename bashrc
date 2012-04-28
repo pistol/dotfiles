@@ -62,6 +62,11 @@ function homify {
 shopt -s cdspell
 shopt -s extglob
 shopt -s checkwinsize
+# make bash aliases work in non-interactive bashs
+# shopt -s -q expand_aliases # WARNING: breaks Android lunch command
+
+# disable damn flow control (C-s and C-q)
+# stty -ixon
 
 export PAGER="less"
 export EDITOR="emacsclient -t"
@@ -75,7 +80,8 @@ export EDITOR="emacsclient -t"
 # sessions (weird that this is not enabled by default).
 shopt -s histappend
 
-export HISTIGNORE="&:pwd:ls:ll:lal:[bf]g:exit:rm*:sudo rm*"
+# export HISTIGNORE="&:pwd:ls:ll:lal:[bf]g:exit:rm*:sudo rm*"
+export HISTIGNORE="&:pwd:ls:ll:lal:[bf]g:exit"
 # remove duplicates from the history (when a new item is added)
 export HISTCONTROL=erasedups
 # increase the default size from only 1,000 items

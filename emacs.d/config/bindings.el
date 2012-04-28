@@ -6,6 +6,9 @@
 ;; Fix xterm keys to use correct mappings (Mac keyboard)
 (xterm-fix-keys)
 
+;; Fix End key (End key would give error: <select> is undefined)
+(define-key my-keys-minor-mode-map (kbd "<select>")  'end-of-buffer)
+
 ;; Window manipulation
 (define-key my-keys-minor-mode-map (kbd "C-M-<right>")   'enlarge-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "C-M-<left>")    'shrink-window-horizontally)
@@ -112,7 +115,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-B")           'backward-to-word)
 
 ;; Personal textmate.el bindings
-;;(define-key my-keys-minor-mode-map (kbd "C-c f")       'textmate-goto-file)
+;; (define-key my-keys-minor-mode-map (kbd "C-c f")       'textmate-goto-file)
 (define-key my-keys-minor-mode-map (kbd "C-c f")         'ffap)
 
 (define-key my-keys-minor-mode-map (kbd "C-<return>")    'textmate-next-line)
@@ -160,7 +163,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-x")           'smex)
 (define-key my-keys-minor-mode-map (kbd "M-X")           'smex-major-mode-commands)
 ;; This is your old M-x.
-(define-key my-keys-minor-mode-map (kbd "C-c C-c M-x")   'execute-extended-command)
+;; (define-key my-keys-minor-mode-map (kbd "C-c C-c M-x")   'execute-extended-command) ; intereres with C-c C-c (quit) in GDB mode
 
 ;; Move cursor back to last change
 (define-key my-keys-minor-mode-map (kbd "C-x C-\\")      'goto-last-change)

@@ -9,3 +9,7 @@ alias ls='ls -h --color'
 function dus {
   du --max-depth 1 . | sort -nr | cut -f 2- | xargs -I {} du -sh {}
 }
+
+function ram {
+  ps -eo rss,pid,user,command --sort -rss | awk '{ hr=$1/1024 ; printf("%4d MB ",hr) } { printf("%6s %6s %s\n",$2, $3, $4) }' | head -n20
+}

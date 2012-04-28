@@ -152,6 +152,23 @@ ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | sort -fk1'
 alias ports="$ports"
 alias sports="sudo $ports"
 
+# Test drive speed, argument is # of MB test file
+function diskspeed {
+  local output=diskspeed.tmp
+  local size=$1
+  if [ -z $size ] ; then
+    size=100
+  fi
+  dd if=/dev/zero of=diskspeed.tmp bs=1M count=$size
+  rm -f $output
+}
+alias ds='diskspeed'
+
+function speedtest {
+  local url='http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
+  curl $url -o /dev/null
+}
+
 #extract files eg: ex tarball.tar#
 function ex {
   if [ -f $1 ] ; then

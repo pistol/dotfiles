@@ -7,7 +7,7 @@
  '(ack-prompt-for-directory t)
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(global-auto-highlight-symbol-mode t)
- '(ibuffer-saved-filter-groups (quote (("smali" ("smali" (used-mode . smali-mode))))))
+ '(ibuffer-saved-filter-groups (quote (("taintdroid" ("C" (used-mode . c-mode))) ("android" ("Shell" (used-mode . sh-mode))))))
  '(ibuffer-saved-filters (quote (("gnus" ((or (mode . message-mode) (mode . mail-mode) (mode . gnus-group-mode) (mode . gnus-summary-mode) (mode . gnus-article-mode)))) ("programming" ((or (mode . emacs-lisp-mode) (mode . cperl-mode) (mode . c-mode) (mode . java-mode) (mode . idl-mode) (mode . lisp-mode)))))))
  '(icicle-mode t)
  '(icicle-show-Completions-initially-flag t)
