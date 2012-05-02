@@ -136,3 +136,6 @@
 [submodule "emacs.d/vendor/ack-and-a-half"]
 	path = emacs.d/vendor/ack-and-a-half
 	url = git://github.com/jhelwig/ack-and-a-half.git
+[submodule "emacs.d/vendor/sr-speedbar"]
+	path = emacs.d/vendor/sr-speedbar
+	url = https://github.com/emacsmirror/sr-speedbar

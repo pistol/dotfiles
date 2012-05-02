@@ -54,6 +54,7 @@
 ;; (vendor 'icicles)
 (vendor 'nav)
 (vendor 'mk-project)
+(vendor 'sr-speedbar)
 
 ;; (vendor 'ruby-electric 'ruby-electric-mode)
 ;; (vendor 'auctex)
