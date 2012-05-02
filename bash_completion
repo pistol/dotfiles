@@ -1,3 +1,7 @@
 if [ -f ~/bin/git_completion ]; then
   . ~/bin/git_completion
 fi
+
+#if [ -f ~/.bash-ido ]; then
+#  . ~/.bash-ido
+#fi

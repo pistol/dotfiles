@@ -301,6 +301,13 @@ point and around or after mark are interchanged."
 
 (defun xterm-fix-keys ()
   (interactive)
+  (define-key input-decode-map "\e[H"     [home])
+  (define-key input-decode-map "\e[F"     [end])
+
+  ;; Meta + PgUp/PgDn
+  (define-key input-decode-map "\e[5;9~"  [M-prior])
+  (define-key input-decode-map "\e[6;9~"  [M-next])
+
   ;; Shift + Arrows
   (define-key input-decode-map "\e[1;2A"  [S-up])
   ;; (define-key input-decode-map "\e[1;2B"  [S-down])

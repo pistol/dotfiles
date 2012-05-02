@@ -21,7 +21,7 @@
 (linum-mode 0)
 
 ;; Highlight current line
-(global-hl-line-mode t)
+;; (global-hl-line-mode t) ;; disabled - high cpu usage!
 
 ;; Show time in modeline
 (display-time-mode 1)
@@ -63,7 +63,8 @@
 (setq truncate-partial-width-windows nil)
 
 ;; Trailing whitespace is unnecessary
-(add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
+;; Disabled: a lot of lines get changed in git repo files
+;; (add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
 
 ;; Trash can support
 (setq delete-by-moving-to-trash t)
@@ -132,3 +133,6 @@
 
 ;; Auto Yes to "Symbolic link to SVN-controlled source file; follow link? "
 (setq vc-follow-symlinks t)
+
+;; workgroups mode
+(workgroups-mode 1)

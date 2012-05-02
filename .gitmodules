@@ -139,3 +139,6 @@
 [submodule "emacs.d/vendor/sr-speedbar"]
 	path = emacs.d/vendor/sr-speedbar
 	url = https://github.com/emacsmirror/sr-speedbar
+[submodule "emacs.d/vendor/workgroups"]
+	path = emacs.d/vendor/workgroups
+	url = git://github.com/tlh/workgroups.el

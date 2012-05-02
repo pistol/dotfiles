@@ -55,6 +55,7 @@
 (vendor 'nav)
 (vendor 'mk-project)
 (vendor 'sr-speedbar)
+(vendor 'workgroups)
 
 ;; (vendor 'ruby-electric 'ruby-electric-mode)
 ;; (vendor 'auctex)
@@ -92,6 +93,7 @@
 (load "config/restore")
 (load "config/sunrise")
 (load "config/ibuffer")
+(load "config/workgroups")
 
 (load "config/projects" 'noerror)
 (load "config/private" 'noerror)

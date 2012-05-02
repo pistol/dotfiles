@@ -6,6 +6,9 @@
 ;; Fix xterm keys to use correct mappings (Mac keyboard)
 (xterm-fix-keys)
 
+;; Fix End key (End key would give error: <select> is undefined)
+(define-key my-keys-minor-mode-map (kbd "<select>")  'end-of-buffer)
+
 ;; Window manipulation
 (define-key my-keys-minor-mode-map (kbd "C-M-<right>")   'enlarge-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "C-M-<left>")    'shrink-window-horizontally)
@@ -76,7 +79,11 @@
 ;(define-key my-keys-minor-mode-map (kbd "M-O")          'rotate-windows)
 
 ;; Repeat
-(define-key my-keys-minor-mode-map (kbd "C-z")           'repeat) ; was suspend-frame
+;; (define-key my-keys-minor-mode-map (kbd "C-z")           'repeat) ; was suspend-frame
+
+;; Workgroups
+(define-key my-keys-minor-mode-map (kbd "C-z ,")           'wg-offset-left)
+(define-key my-keys-minor-mode-map (kbd "C-z .")           'wg-offset-right)
 
 ;; Easier delete forward word
 (define-key my-keys-minor-mode-map (kbd "<C-kp-delete>")   'kill-word)
@@ -91,7 +98,7 @@
 (define-key my-keys-minor-mode-map (kbd "%")             'match-paren)
 
 ;; Easy inserts
-(define-key my-keys-minor-mode-map (kbd "C-.")           'insert-arrow)
+;; (define-key my-keys-minor-mode-map (kbd "C-.")           'insert-arrow)
 
 ;; ibuffer > list-buffers
 (define-key my-keys-minor-mode-map (kbd "C-x C-b")       'ibuffer)
@@ -103,6 +110,8 @@
 ;; Home/End to Start and End of line instead of Start/End of buffer
 ;(define-key my-keys-minor-mode-map (kbd "<home>")        'beginning-of-line)
 ;(define-key my-keys-minor-mode-map (kbd "<end>")         'end-of-line)
+(define-key my-keys-minor-mode-map (kbd "<home>")        'beginning-of-buffer)
+(define-key my-keys-minor-mode-map (kbd "<end>")         'end-of-buffer)
 
 ;; Improved navigation and editing (assumes misc.el)
 (define-key my-keys-minor-mode-map (kbd "M-Z")           'zap-up-to-char)
@@ -110,7 +119,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-B")           'backward-to-word)
 
 ;; Personal textmate.el bindings
-;;(define-key my-keys-minor-mode-map (kbd "C-c f")       'textmate-goto-file)
+;; (define-key my-keys-minor-mode-map (kbd "C-c f")       'textmate-goto-file)
 (define-key my-keys-minor-mode-map (kbd "C-c f")         'ffap)
 
 (define-key my-keys-minor-mode-map (kbd "C-<return>")    'textmate-next-line)
@@ -158,7 +167,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-x")           'smex)
 (define-key my-keys-minor-mode-map (kbd "M-X")           'smex-major-mode-commands)
 ;; This is your old M-x.
-(define-key my-keys-minor-mode-map (kbd "C-c C-c M-x")   'execute-extended-command)
+;; (define-key my-keys-minor-mode-map (kbd "C-c C-c M-x")   'execute-extended-command) ; intereres with C-c C-c (quit) in GDB mode
 
 ;; Move cursor back to last change
 (define-key my-keys-minor-mode-map (kbd "C-x C-\\")      'goto-last-change)
