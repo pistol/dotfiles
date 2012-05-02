@@ -24,3 +24,5 @@ emacs.d/framegeometry
 .hgignore
 *.lock
 emacs.d/config/custom.el
+*.cache
+*~

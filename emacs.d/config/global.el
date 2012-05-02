@@ -63,7 +63,8 @@
 (setq truncate-partial-width-windows nil)
 
 ;; Trailing whitespace is unnecessary
-(add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
+;; Disabled: a lot of lines get changed in git repo files
+;; (add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
 
 ;; Trash can support
 (setq delete-by-moving-to-trash t)

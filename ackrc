@@ -24,3 +24,6 @@ ruby=thor
 
 --type-set
 smali=smali
+
+--type-set
+mk=mk

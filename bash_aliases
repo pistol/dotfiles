@@ -13,9 +13,9 @@ add-alias ()
 ############################################################
 
 alias l="ls"
-alias ll="ls -lh"
+alias ll="ls -l"
 alias la="ls -a"
-alias lal="ls -alh"
+alias lal="ls -al"
 
 alias lx="ls -lXB"              # sort by extension
 alias lk="ls -lSr"              # sort by size
@@ -31,6 +31,7 @@ alias lm="ls -al |less"         # pipe through 'less'
 # -a '' starts emacs in daemon mode if not already started
 alias et="emacsclient -a '' -t"
 alias eg="emacsclient -a '' -c -n"
+alias ec="emacsclient -n"
 alias e="et"
 alias ed="emacs --daemon"
 
@@ -150,6 +151,23 @@ alias z='suspend'
 ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | sort -fk1'
 alias ports="$ports"
 alias sports="sudo $ports"
+
+# Test drive speed, argument is # of MB test file
+function diskspeed {
+  local output=diskspeed.tmp
+  local size=$1
+  if [ -z $size ] ; then
+    size=100
+  fi
+  dd if=/dev/zero of=diskspeed.tmp bs=1M count=$size
+  rm -f $output
+}
+alias ds='diskspeed'
+
+function speedtest {
+  local url='http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
+  curl $url -o /dev/null
+}
 
 #extract files eg: ex tarball.tar#
 function ex {
