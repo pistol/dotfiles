@@ -24,7 +24,7 @@
 ;; (global-hl-line-mode t) ;; disabled - high cpu usage!
 
 ;; Show time in modeline
-(display-time-mode 1)
+;; (display-time-mode 1)
 ;; (display-battery-mode 1)
 
 ;; Small fringes

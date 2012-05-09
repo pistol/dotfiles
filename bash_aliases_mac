@@ -47,6 +47,20 @@ function cd_finder {
   cd "$currFolderPath"
 }
 
+function sgrep()
+{
+  find -E . -type f -iregex '.*\.(c|h|cpp|S|java|xml|sh|mk)' -print0 | xargs -0 grep --color -n "$@"
+}
+function mgrep()
+{
+  find -E . -type f -iregex '.*/(Makefile|Makefile\..*|.*\.make|.*\.mak|.*\.mk)' -print0 | xargs -0 grep --color -n "$@"
+}
+
+function treegrep()
+{
+  find -E . -type f -iregex '.*\.(c|h|cpp|S|java|xml)' -print0 | xargs -0 grep --color -n -i "$@"
+}
+
 if [ -e ~/.bash_aliases_private_mac ]; then
   . ~/.bash_aliases_private_mac
 fi

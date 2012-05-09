@@ -159,7 +159,7 @@ function diskspeed {
   if [ -z $size ] ; then
     size=100
   fi
-  dd if=/dev/zero of=diskspeed.tmp bs=1M count=$size
+  dd if=/dev/zero of=diskspeed.tmp bs=1M count=$size conv=fdatasync
   rm -f $output
 }
 alias ds='diskspeed'
@@ -273,6 +273,18 @@ function cmd {
 function color {
   "$@" 2>&1>&3|sed 's,.*,\x1B[31m&\x1B[0m,'>&2;
 } 3>&1
+
+#Greps on all local Java files.
+function jgrep()
+{
+    find . -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$@"
+}
+
+# Greps on all local C/C++ files.
+function cgrep()
+{
+    find . -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep --color -n "$@"
+}
 
 ############################################################
 # Private aliases (OS independent)

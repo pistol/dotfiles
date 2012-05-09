@@ -14,6 +14,21 @@ function ram {
   ps -eo rss,pid,user,command --sort -rss | awk '{ hr=$1/1024 ; printf("%4d MB ",hr) } { printf("%6s %6s %s\n",$2, $3, $4) }' | head -n20
 }
 
+function sgrep()
+{
+  find . -type f -iregex '.*\.\(c\|h\|cpp\|S\|java\|xml\|sh\|mk\)' -print0 | xargs -0 grep --color -n "$@"
+}
+function mgrep()
+{
+  find . -regextype posix-egrep -iregex '(.*\/Makefile|.*\/Makefile\..*|.*\.make|.*\.mak|.*\.mk)' -type f -print0 | xargs -0 grep --color -n "$@"
+}
+
+function treegrep()
+{
+  find . -regextype posix-egrep -iregex '.*\.(c|h|cpp|S|java|xml)' -type f -print0 | xargs -0 grep --color -n -i "$@"
+}
+
+
 # Load private settings
 if [ -e ~/.bash_aliases_private_linux ]; then
   . ~/.bash_aliases_private_linux
