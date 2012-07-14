@@ -3,7 +3,9 @@
 ############################################################
 
 alias j='qstat'
-alias ls='ls -h --color'
+alias ls='ls -h --group-directories-first --color'
+
+alias cpr='cp -dR --preserve=ownership,timestamps,links'
 
 # Properly dispay disk usage sorted by size
 function dus {

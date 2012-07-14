@@ -166,7 +166,8 @@ esac
 prefix_path ~/bin
 prefix_path ~/bin/private
 prefix_path ./bin
-prefix_path .
+# Adding . can be a security issue
+# prefix_path .
 
 prefix_manpath ~/man
 
@@ -221,10 +222,13 @@ if [ -n "$BASH" ]; then
   bakwht='\e[47m'   # White
   txtrst='\e[0m'    # Text Reset
 
-  export GIT_PS1_SHOWDIRTYSTATE=true
-  export GIT_PS1_SHOWUNTRACKEDFILES=true
-  export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOST\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]"$(__git_ps1)"\n\[$bldred\]\$\[$txtrst\] "
-  # export PS1="\[$bldred\]\$\[$txtrst\] "
+  # export GIT_PS1_SHOWDIRTYSTATE=false
+  # export GIT_PS1_SHOWUNTRACKEDFILES=false
+
+  # Disable these for performance (fast cd)
+  unset GIT_PS1_SHOWDIRTYSTATE
+  unset GIT_PS1_SHOWUNTRACKEDFILES
+  export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOST\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]\$(__git_ps1)\n\[$bldred\]\$\[$txtrst\] "
 fi
 
 ############################################################

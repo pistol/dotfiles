@@ -1,13 +1,17 @@
 [user]
-	email = valentinpistol@gmail.com
-  name = pistol
+	email = pistol@cs.duke.edu
+	name = Valentin Pistol
 [alias]
   co = checkout
   st = status
   br = branch
   w = whatchanged
+  last = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  wsadd = "!sh -c 'git diff -- \"$@\" | git apply --cached --whitespace=fix;\
+             git checkout -- ${1-.} \"$@\"' -"
 [apply]
-  whitespace = nowarn
+  whitespace = fix
 [color]
   diff = auto
   status = auto
@@ -17,13 +21,18 @@
   pager = true
 [merge]
   summary = true
+  tool = vimdiff
 [push]
   default = matching
 [github]
   user = pistol
 [diff]
   ignoresubmodules = untracked
+  tool = vimdiff
 [core]
-  excludesfile = /Users/pistol/.gitignore
+  excludesfile = ~/.gitignore
+  whitespace = cr-at-eol,trailing-space,space-before-tab
 [url "git@github.com:"]
  pushInsteadOf = git://github.com/
+[difftool]
+  prompt = false

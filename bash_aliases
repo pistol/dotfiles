@@ -152,6 +152,8 @@ ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | sort -fk1'
 alias ports="$ports"
 alias sports="sudo $ports"
 
+alias diffdir='diff -r -y --suppress-common-lines'
+
 # Test drive speed, argument is # of MB test file
 function diskspeed {
   local output=diskspeed.tmp
@@ -231,8 +233,23 @@ function swap()  # Swap 2 filenames around, if they exist
     mv $TMPFILE "$2"
 }
 
+function dir-files {
+  local default='.'
+  local path=${1:-$default}
+  for dir in $(find $path -mindepth 1 -maxdepth 1 -type d | sed "s|^\./||");
+  do
+    echo -e "$(find $dir -type f| wc -l) \t $dir";
+  done | sort -rn
+}
+
+function dir-extensions {
+  local default=.
+  local path=${1:-.}
+  find $path -type f -printf "%f\n" | sed 's/.*\.//' | sort | uniq -c | sort -rn | head -20
+}
+
 # Find a file with a pattern in name:
-function ff() { find . -type f -iname '*'$*'*' -ls ; }
+function ff() { find . -type f -iname '*'$*'*' ; }
 
 # Find a file with pattern $1 in name and Execute $2 on it:
 function fe()
@@ -274,7 +291,7 @@ function color {
   "$@" 2>&1>&3|sed 's,.*,\x1B[31m&\x1B[0m,'>&2;
 } 3>&1
 
-#Greps on all local Java files.
+# Greps on all local Java files.
 function jgrep()
 {
     find . -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$@"

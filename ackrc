@@ -1,5 +1,7 @@
 --ignore-dir=log
 --ignore-dir=vendor
+--ignore-dir=out
+--ignore-dir=.repo
 
 --type-set
 json=json
@@ -26,4 +28,4 @@ ruby=thor
 smali=smali
 
 --type-set
-mk=mk
+dex=dex

@@ -53,6 +53,9 @@
  '(compilation-line-number      ((t ( :background nil           :foreground "DarkGray"   :weight normal :underline nil ))))
  ;; '(iedit-occurence-face         ((t ( :background "Purple"      :foreground "White"      :weight normal :underline nil ))))
 
+ '(cperl-array-face             ((t ( :background "#101010"     :foreground "LawnGreen" :weight normal :underline nil ))))
+ '(cperl-hash-face              ((t ( :background "#101010"     :foreground "DodgerBlue" :weight normal :underline nil ))))
+
  '(magit-header                 ((t ( :background "#0052a3" :foreground "White"))))
  '(magit-section-title          ((t ( :inherit magit-header ))))
  '(magit-branch                 ((t ( :inherit magit-header ))))

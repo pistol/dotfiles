@@ -7,4 +7,5 @@
 (setq exec-path (cons "/Applications/Emacs.app/Contents/MacOS/bin" exec-path))
 (setenv "PATH" (concat "/Applications/Emacs.app/Contents/MacOS/bin:" (getenv "PATH")))
 
-(setenv "BASH_ENV" "~/.bashrc")
+;; WARNING: Disabled this as it seems to dramatically slow down all emacs shell commands
+;; (setenv "BASH_ENV" "~/.bashrc")
