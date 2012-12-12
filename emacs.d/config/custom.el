@@ -12,7 +12,7 @@
  '(icicle-mode t)
  '(icicle-show-Completions-initially-flag t)
  '(ido-ubiquitous-mode t)
- '(org-agenda-files (quote ("~/Documents/research-milestones-sp12.txt" "~/org/book/home.org" "~/org/book/work.org" "~/org/book/emacsbook.org")) t))
+ '(org-agenda-files nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

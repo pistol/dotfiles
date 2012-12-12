@@ -10,6 +10,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   wsadd = "!sh -c 'git diff -- \"$@\" | git apply --cached --whitespace=fix;\
              git checkout -- ${1-.} \"$@\"' -"
+	unstage = reset HEAD --
 [apply]
   whitespace = fix
 [color]
@@ -29,6 +30,7 @@
 [diff]
   ignoresubmodules = untracked
   tool = vimdiff
+	noprefix = true
 [core]
   excludesfile = ~/.gitignore
   whitespace = cr-at-eol,trailing-space,space-before-tab

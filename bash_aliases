@@ -154,6 +154,14 @@ alias sports="sudo $ports"
 
 alias diffdir='diff -r -y --suppress-common-lines'
 
+# Properly dispay disk usage sorted by size
+function dus {
+  cd ${1:-.}
+  # du --max-depth 1 $dir| sort -nr | sed 1d | cut -f 2- | sed "s#$dir/*##" | xargs -I {} du -sh {}
+  du -hs * | sort -h -r
+  cd $OLDPWD
+}
+
 # Test drive speed, argument is # of MB test file
 function diskspeed {
   local output=diskspeed.tmp

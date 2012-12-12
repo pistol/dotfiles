@@ -299,6 +299,20 @@ point and around or after mark are interchanged."
         (next-error))
     (error nil)))
 
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive) (revert-buffer t t)
+  (message "Refreshed current file."))
+
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files."
+  (interactive)
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (when (and (buffer-file-name) (not (buffer-modified-p)))
+        (revert-buffer t t t) )))
+  (message "Refreshed open files."))
+
 (defun xterm-fix-keys ()
   (interactive)
   (define-key input-decode-map "\e[H"     [home])

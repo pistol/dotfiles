@@ -41,8 +41,8 @@
 (define-key my-keys-minor-mode-map (kbd "<f4>")          'kmacro-end-or-call-macro)  ;; already default
 
 ;; Refresh-like
-(define-key my-keys-minor-mode-map (kbd "<f5>")          'revert-buffer)
-(define-key my-keys-minor-mode-map (kbd "C-<f5>")        'revbufs)
+(define-key my-keys-minor-mode-map (kbd "<f5>")          'revert-buffer-no-confirm)
+(define-key my-keys-minor-mode-map (kbd "C-<f5>")        'revert-all-buffers) ; consider 'revbufs
 
 ;; Force smali highlighting in ack/grep modes
 ;; (define-key my-keys-minor-mode-map (kbd "<f7>")          'hack-smali-highlight)

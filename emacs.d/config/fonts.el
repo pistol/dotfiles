@@ -9,8 +9,8 @@
 ;;   "ascii:-apple-monaco-medium-r-normal--12-100-*-*-m-100-mac-roman")
 ;; )
 
-;(set-default-font "-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-iso10646-")
-(set-default-font "Menlo-9")
+(set-default-font "-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-iso10646-")
+;; (set-default-font "Menlo-9")
 
 ;; http://stackoverflow.com/questions/3984730/emacs-gui-with-emacs-daemon-not-loading-fonts-correctly
 ;; Correctly set font even when starting in Daemon mode

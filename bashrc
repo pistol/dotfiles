@@ -70,7 +70,8 @@ shopt -s checkwinsize
 # stty -ixon
 
 export PAGER="less"
-export EDITOR="emacsclient -t"
+# export EDITOR="emacsclient -t"
+export EDITOR="vim"
 
 ############################################################
 ## History
@@ -82,11 +83,11 @@ export EDITOR="emacsclient -t"
 shopt -s histappend
 
 # export HISTIGNORE="&:pwd:ls:ll:lal:[bf]g:exit:rm*:sudo rm*"
-export HISTIGNORE="&:pwd:ls:ll:lal:[bf]g:exit"
+export HISTIGNORE="pwd:ls:ll:lal:exit"
 # remove duplicates from the history (when a new item is added)
 export HISTCONTROL=erasedups
 # increase the default size from only 1,000 items
-export HISTSIZE=10000
+export HISTSIZE=1000000
 
 export TERM=xterm-256color
 export HOST=$( hostname )
@@ -100,28 +101,11 @@ if [ -e ~/.bash_aliases ]; then
 fi
 
 ############################################################
-## Bash Completion, if available
-############################################################
-
-# Mac: `brew --prefix` default is /usr/local
-if [ -f /usr/local/etc/bash_completion ]; then
- . /usr/local/etc/bash_completion
-elif  [ -f /etc/bash_completion ]; then
-  . /etc/bash_completion
-elif  [ -f /etc/profile.d/bash_completion ]; then
-  . /etc/profile.d/bash_completion
-elif [ -e ~/.bash_completion ]; then
-  # Fallback. This should be sourced by the above scripts.
-  . ~/.bash_completion
-fi
-
-############################################################
 ## Set PATHs
 ############################################################
 #echo "Old PATH=$PATH"
 # Build PATH from scratch
 unset PATH
-
 prefix_path /bin
 prefix_path /usr/bin
 prefix_path /usr/local/bin
@@ -142,6 +126,14 @@ prefix_ldpath /lib
 prefix_ldpath /usr/lib
 prefix_ldpath /usr/local/X/lib
 prefix_ldpath /usr/local/lib
+
+############################################################
+## OS independent
+############################################################
+
+if [ -e ~/.bashrc_private ]; then
+  . ~/.bashrc_private
+fi
 
 ############################################################
 ## OS specific
@@ -180,6 +172,15 @@ export PATH=`homify $PATH`
 # export MANPATH=`homify $MANPATH`
 # export CDPATH=`homify $CDPATH`
 # export LD_LIBRARY_PATH=`homify $LD_LIBRARY_PATH`
+
+############################################################
+## Bash Completion, if available
+############################################################
+
+# Mac: `brew --prefix` default is /usr/local
+if [ -f /usr/local/etc/bash_completion ]; then
+ . /usr/local/etc/bash_completion
+fi
 
 ############################################################
 ## Bash prompt coloring

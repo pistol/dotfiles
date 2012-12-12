@@ -1,0 +1,35 @@
+#!/bin/bash
+
+numCPU=`cat /proc/cpuinfo | grep -c processor`
+numPhys=`cat /proc/cpuinfo | grep "physical id" | sort -n | uniq | wc -l`
+numCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'`
+if [ -z $numCores ]; then
+numCores=0
+fi
+cat /proc/cpuinfo | grep -q "ht"
+isHT=$?
+numThrd=1
+if [ $isHT -eq 0 ]
+then
+numThrd=2
+fi
+
+sibs=$(($numCores * $numThrd))
+if [ $sibs -ne "0" ]; then
+  socks=$(($numCPU / $sibs))
+else
+  socks="0, Virtual Machine?"
+fi
+
+model=`cat /proc/cpuinfo | grep "model name" | uniq | sed 's/.*: //' | sed 's/\s\{2,\}/ /g'`
+
+echo "Model: $model" 
+echo "CPUs: $numCPU"
+echo "Cores: $numCores"
+echo "Sockets: $socks"
+if [ $isHT -eq 0 ]
+then
+    echo "HT: Yes"
+else
+    echo "HT: No"
+fi

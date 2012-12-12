@@ -14,7 +14,7 @@ alias dstore-clean='find . -type f -name .DS_Store -print0 | xargs -0 rm'
 alias whotunes='lsof -r 2 -n -P -F n -c iTunes -a -i TCP@`hostname`:3689'
 
 if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-  alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+  alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
   # Terminal
   # alias et='emacsclient -t ~/bin/emacs-daemon-term'
   # alias emacsclient='/usr/bin/emacsclient'
@@ -23,12 +23,6 @@ if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
   # alias eg='emacsclient -n -a ~/bin/emacs-daemon-gui'
   alias eg='emacsclient -n'
 fi
-
-# Properly dispay disk usage sorted by size
-#alias du='du -d 1 . | sort -nr | cut -f 2- | xargs -I {} du -sh {}';
-function dus {
-  du -d 1 $1 | sort -nr | cut -f 2- | xargs -I {} du -sh {}
-}
 
 # cdf: cd's to frontmost window of Finder
 alias cdf='cd_finder'
