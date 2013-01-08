@@ -60,31 +60,31 @@
   url = git://github.com/eschulte/rinari.git
 [submodule "emacs.d/vendor/feature-mode.el"]
   path = emacs.d/vendor/feature-mode.el
-  url = https://github.com/michaelklishin/cucumber.el.git
+  url = git://github.com/michaelklishin/cucumber.el.git
 [submodule "emacs.d/vendor/js2-mode"]
   path = emacs.d/vendor/js2-mode
-  url = https://github.com/mooz/js2-mode.git
+  url = git://github.com/mooz/js2-mode.git
 [submodule "emacs.d/vendor/sass-mode"]
   path = emacs.d/vendor/sass-mode
-  url = https://github.com/nex3/sass-mode.git
+  url = git://github.com/nex3/sass-mode.git
 [submodule "emacs.d/vendor/haml-mode"]
   path = emacs.d/vendor/haml-mode
-  url = https://github.com/nex3/haml-mode.git
+  url = git://github.com/nex3/haml-mode.git
 [submodule "emacs.d/vendor/revbufs"]
   path = emacs.d/vendor/revbufs
-  url = https://github.com/emacsmirror/revbufs.git
+  url = git://github.com/emacsmirror/revbufs.git
 [submodule "emacs.d/vendor/textmate"]
   path = emacs.d/vendor/textmate.el
-  url = https://github.com/defunkt/textmate.el.git
+  url = git://github.com/defunkt/textmate.el.git
 [submodule "emacs.d/vendor/mo-git-blame"]
   path = emacs.d/vendor/mo-git-blame
-  url = https://github.com/mbunkus/mo-git-blame.git
+  url = git://github.com/mbunkus/mo-git-blame.git
 [submodule "emacs.d/vendor/ace-jump-mode"]
   path = emacs.d/vendor/ace-jump-mode
-  url = https://github.com/winterTTr/ace-jump-mode.git
+  url = git://github.com/winterTTr/ace-jump-mode.git
 [submodule "emacs.d/vendor/key-chord"]
   path = emacs.d/vendor/key-chord
-  url = https://github.com/emacsmirror/key-chord.git
+  url = git://github.com/emacsmirror/key-chord.git
 [submodule "emacs.d/vendor/bookmark+"]
   path = emacs.d/vendor/bookmark+
   url = git://github.com/emacsmirror/bookmark-plus.git
@@ -138,7 +138,7 @@
 	url = git://github.com/jhelwig/ack-and-a-half.git
 [submodule "emacs.d/vendor/sr-speedbar"]
 	path = emacs.d/vendor/sr-speedbar
-	url = https://github.com/emacsmirror/sr-speedbar
+	url = git://github.com/emacsmirror/sr-speedbar
 [submodule "emacs.d/vendor/workgroups"]
 	path = emacs.d/vendor/workgroups
 	url = git://github.com/tlh/workgroups.el
