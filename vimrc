@@ -58,7 +58,7 @@ set history=1000
 if has("gui_running")
     "disable toolbars and scrollbars
     set guioptions=-tLR
-    set guifont=Menlo:h12
+    "set guifont=Menlo:h12
     set noantialias
     colorscheme leo
 endif

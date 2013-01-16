@@ -1,6 +1,6 @@
-[submodule "emacs.d/vendor/maxframe.el"]
-  path = emacs.d/vendor/maxframe.el
-  url = git://github.com/rmm5t/maxframe.el.git
+[submodule "emacs.d/vendor/maxframe"]
+	path = emacs.d/vendor/maxframe
+	url = git://github.com/rmm5t/maxframe.el.git
 [submodule "emacs.d/vendor/magit"]
   path = emacs.d/vendor/magit
   url = git://github.com/magit/magit.git
@@ -20,8 +20,8 @@
   path = emacs.d/vendor/revbufs
   url = git://github.com/emacsmirror/revbufs.git
 [submodule "emacs.d/vendor/textmate"]
-  path = emacs.d/vendor/textmate.el
-  url = git://github.com/defunkt/textmate.el.git
+	path = emacs.d/vendor/textmate
+	url = git://github.com/defunkt/textmate.el.git
 [submodule "emacs.d/vendor/mo-git-blame"]
   path = emacs.d/vendor/mo-git-blame
   url = git://github.com/mbunkus/mo-git-blame.git
