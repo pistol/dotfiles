@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# svndiff -- svn diff with vimdiff, support compare with different revision
+#
+# Written by Hean Kuan Ong (heankuanong@gmail.com)
+# May 18, 2007
+#
+# Copyright (C) 2007 Hean Kuan Ong All rights reserved.
+#
+# This software is provided "as is" without express or implied warranties.
+#
+# Permission is granted to use, copy, modify and distribute this software,
+# provided this disclaimer and copyright are preserved on all copies. This
+# software may not, however, be sold or distributed for profit, or included
+# with other software which is sold or distributed for profit, without the
+# permission of the author.
+# 
+
+PROG=`basename $0`
+N1=0
+N2=0
+
+helpme()
+{
+    echo ""
+    echo "USAGE: svndiff [OPTION] [FILE]"
+    echo ""
+    echo "OPTION:"
+    echo "-r <revision number>"
+    echo ""
+    echo "Examples:"
+    echo "$PROG <file>                          - Compare working with current copy"
+    echo "$PROG -r <rev no> <file>              - Compare specified rev copy with current copy"
+    echo "$PROG -r <rev no> <rivision> <file>   - Compare 2 different copy" 
+    exit 2
+}
+
+if [ $# -lt 1 ]
+then
+    helpme
+elif [ -e $1 ]
+then
+    TEMP=/tmp/tmp.$$.`basename $1`
+    svn cat $1 > $TEMP
+    vimdiff $TEMP $1
+    rm -f $TEMP
+elif [[ "$1" = "-r"  ]]
+then
+    if [ $# -gt 2 ]
+    then
+        case "$2" in 
+            *[!0-9]*) N1=0 ;;
+            *) N1=1 ;;
+        esac
+        case "$3" in 
+            *[!0-9]*) N2=0 ;;
+            *) N2=1 ;;
+        esac
+    fi
+    if [ -e $3 ]
+    then
+        if [ $N1 -ne 1 ]
+        then
+            helpme
+        fi
+        TEMP=/tmp/rev.$2.`basename $3`
+        svn cat -r $2 $3 > $TEMP
+        vimdiff $TEMP $3
+        rm -f $TEMP
+    elif [ -e $4 ]
+    then
+        if [ $N1 -ne 1 ] || [ $N2 -ne 1 ]
+        then
+            helpme
+        fi
+        TEMP=/tmp/rev.$2.`basename $4`
+        TEMP2=/tmp/rev.$3.`basename $4`
+        svn cat -r $2 $4 > $TEMP
+        svn cat -r $3 $4 > $TEMP2
+        vimdiff $TEMP $TEMP2
+        rm -f $TEMP
+        rm -f $TEMP2
+    else
+        helpme
+    fi
+else
+    helpme
+fi
+

@@ -26,6 +26,7 @@ set wildmode=longest,list
 
 filetype on
 "force colorscheme, apparently not always loaded by default
+colorscheme leo
 
 " Custom extensions to highlight
 " slicc files
@@ -36,6 +37,7 @@ au BufNewFile,BufRead *.lex set filetype=lex
 au BufNewFile,BufRead *.grm set filetype=lex
 au BufRead,BufNewFile *.smali set filetype=smali
 au BufNewFile,BufRead *.dexdump set filetype=smali
+au BufRead,BufNewFile *.dis setfiletype objdasm
 if has ("autocmd")
     " File type detection. Indent based on filetype. Recommended.
     filetype plugin indent on

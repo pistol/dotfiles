@@ -138,8 +138,12 @@ alias c="clear"
 alias mkdir='mkdir -p'
 # Edit vim settings
 alias ve="vim ~/.vimrc"
+# Read only VIM pipe!
+alias rvim="vim -R -"
 # Reload bash settings
 alias br="source ~/.bashrc"
+# Fix irssi with tmux
+alias irssi='TERM=screen-256color irssi'
 
 # # Free space, human readable
 alias df='df -h'
@@ -212,6 +216,18 @@ function psgrep {
 
     echo "!! Need name to grep for"
   fi
+}
+
+# Find and return the pid given a name, ignoring the grep process
+function pid
+{
+    local EXE="$1";
+    if [ "$EXE" ]; then
+        local PID=`ps aux| fgrep $1 | fgrep -v fgrep | sed -e 's/[^ ]* *\([0-9]*\).*/\1/'`;
+        echo "$PID";
+    else
+        echo "usage: pid name";
+    fi
 }
 
 # showip - show the current IP address if connected to the internet.

@@ -16,11 +16,10 @@ emacs.d/tramp
 
 vim/.netrwhist
 
-#*#
+\#*#
 *.cache
 *.elc
 *.lock
-*/#*#
 */.hg/*
 *_private*
 *~
