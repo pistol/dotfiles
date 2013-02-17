@@ -9,7 +9,7 @@
 home = File.expand_path('~')
 
 Dir['*'].each do |file|
-  next if file =~ /install/ || file =~ /README/
+  next if file =~ /install/ || file =~ /README/ || file =~ /private/ || file =~ /bin/ || file =~ /scripts/
   target = File.join(home, ".#{file}")
   `ln -fvns #{File.expand_path file} #{target}`
 end
