@@ -158,6 +158,12 @@ alias sports="sudo $ports"
 
 alias diffdir='diff -r -y --suppress-common-lines'
 
+# Refresh file access times (avoid having files deleted for inactivity)
+function touchall {
+  dir=${@:-.}
+  find $dir -exec touch -a {} \;
+}
+
 # Properly dispay disk usage sorted by size
 function dus {
   cd ${1:-.}

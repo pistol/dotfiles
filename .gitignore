@@ -26,3 +26,6 @@ vim/.netrwhist
 .DS_Store
 .hgignore
 /.hg/*
+
+irssi/sasl.auth
+irssi/config.autosave
