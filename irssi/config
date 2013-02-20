@@ -247,6 +247,7 @@ settings = {
     show_nickmode = "yes";
     hilight_nick_matches = "yes";
     window_history = "yes";
+    theme = "fear2";
   };
 
   "fe-text" = { actlist_sort = "refnum"; };
