@@ -45,12 +45,14 @@ chatnets = {
 
 channels = (
   { name = "#radare"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#darm"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#smali"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "##linux"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "##workingset"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#linaro"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#tmux"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#mosh"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#irssi"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#android"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#emacs"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#vim"; chatnet = "freenode"; autojoin = "Yes"; },
