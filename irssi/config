@@ -167,9 +167,9 @@ statusbar = {
 
       # list of items in statusbar in the display order
       items = {
-        #barstart = { priority = "100"; };
-        time = { };
-        user = { };
+        barstart = { priority = "100"; };
+        #time = { };
+        #user = { };
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
@@ -186,7 +186,7 @@ statusbar = {
       position = "1";
       visible = "inactive";
       items = {
-        #barstart = { priority = "100"; };
+        barstart = { priority = "100"; };
         window = { };
         window_empty = { };
         more = { priority = "-1"; alignment = "right"; };
