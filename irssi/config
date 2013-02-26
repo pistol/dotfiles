@@ -238,13 +238,6 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_2 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_2 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 
@@ -269,11 +262,25 @@ settings = {
     hilight_nick_matches = "yes";
     window_history = "yes";
     theme = "fear2";
+    activity_hide_targets = "";
+    activity_hide_level = "QUITS JOINS PARTS NICKS MODES KICKS";
+    hilight_act_color = "%G";
+    hilight_color = "%B";
   };
 
   "fe-text" = { actlist_sort = "refnum"; };
   "irc/core" = { skip_motd = "yes"; };
-  "perl/core/scripts" = { nicklist_height = "30"; nicklist_width = "15"; };
+  "perl/core/scripts" = {
+    nicklist_height = "30";
+    nicklist_width = "15";
+    awl_display_key = "%K$Q|$H$C$S";
+    awl_block = "-10";
+    awl_hide_data = "0";
+    awl_display_key_active = "$Q%K|%G$H$C$S";
+    awl_display_nokey = "%K$N|$H$C$S";
+    awl_display_header = "";
+    awl_display_nokey_active = "%K$Q|$H$C$S";
+  };
 };
 
 ignores = (
@@ -287,3 +294,6 @@ keyboard = (
   { key = "meta-[M"; id = "command"; data = "mouse_xterm "; }
 );
 logs = { };
+hilights = ( 
+  { text = "fallout"; color = "%R"; nick = "no"; word = "no"; }
+);
