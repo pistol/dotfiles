@@ -154,7 +154,7 @@ ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | sort -fk1'
 alias ports="$ports"
 alias sports="sudo $ports"
 
-alias diffdir='diff -r -y --suppress-common-lines'
+alias diffdir='diff -r -y --suppress-common-lines -x .git -x .svn -x .repo'
 
 # Properly dispay disk usage sorted by size
 function dus {
