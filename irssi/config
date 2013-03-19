@@ -231,13 +231,6 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_1 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_1 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 
@@ -257,7 +250,7 @@ settings = {
     windows_auto_renumber = "yes";
     show_nickmode_empty = "yes";
     show_names_on_join = "no";
-    autocreate_query_level = "NONE";
+    autocreate_query_level = "MSGS";
     show_nickmode = "yes";
     hilight_nick_matches = "yes";
     window_history = "yes";
