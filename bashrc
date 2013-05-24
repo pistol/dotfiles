@@ -129,7 +129,9 @@ prefix_path /usr/sbin
 prefix_path /usr/local/sbin
 prefix_path /usr/texbin
 
-prefix_manpath /usr/X11R6/man
+unset MANPATH
+prefix_manpath /usr/java/man
+prefix_manpath /usr/X11/share/man
 prefix_manpath /usr/share/man
 prefix_manpath /usr/local/man
 prefix_manpath /usr/local/share/man
