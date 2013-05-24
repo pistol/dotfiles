@@ -62,12 +62,12 @@ function prefix_ldpath {
   fi
 }
 
+# WARNING: this seems to break things, must have full path!
 # Convert /home/username or /Users/username to ~/ in PATHs
-# Also remove last ':' if any
 function homify {
   local path=$1
   # Need to use ',' delimiter instead of '/' in sed since path contains '/'
-  echo $path | sed "s,$HOME,~,g" | sed 's/:$//'
+  echo $path | sed "s,$HOME,~,g"
 }
 
 ############################################################
@@ -249,15 +249,6 @@ prefix_path ~/bin
 prefix_path ~/bin/private
 # prefix_path .
 
-# Need to investigate this, it broke down the Android build process
-# prefix_cdpath .
-
-# Homify paths
-# export PATH=`homify $PATH`
-# Homify MANPATH seems to not load man pages correctly in ~
-# export MANPATH=`homify $MANPATH`
-# export CDPATH=`homify $CDPATH`
-# export LD_LIBRARY_PATH=`homify $LD_LIBRARY_PATH`
 
 ############################################################
 ## Bash Completion, if available
