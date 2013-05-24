@@ -232,8 +232,6 @@ esac
 # Make sure these paths are ahead of custom paths
 prefix_path ~/bin
 prefix_path ~/bin/private
-prefix_path ./bin
-# Adding . can be a security issue
 # prefix_path .
 
 prefix_manpath ~/man
@@ -242,7 +240,7 @@ prefix_manpath ~/man
 # prefix_cdpath .
 
 # Homify paths
-export PATH=`homify $PATH`
+# export PATH=`homify $PATH`
 # Homify MANPATH seems to not load man pages correctly in ~
 # export MANPATH=`homify $MANPATH`
 # export CDPATH=`homify $CDPATH`

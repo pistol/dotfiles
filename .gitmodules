@@ -12,7 +12,7 @@
   url = git://github.com/emacsmirror/psvn.git
 [submodule "emacs.d/vendor/auctex"]
   path = emacs.d/vendor/auctex
-  url = git://github.com/eschulte/auctex.git
+  url = git://github.com/emacsmirror/auctex.git
 [submodule "emacs.d/vendor/full-ack"]
   path = emacs.d/vendor/full-ack
   url = git://github.com/nschum/full-ack.git
@@ -49,9 +49,9 @@
 [submodule "emacs.d/vendor/iedit"]
   path = emacs.d/vendor/iedit
   url = git://github.com/emacsmirror/iedit.git
-[submodule "emacs.d/vendor/auto-highlight-symbol"]
-  path = emacs.d/vendor/auto-highlight-symbol
-  url = git://github.com/mitsuo-saito/auto-highlight-symbol-mode.git
+#[submodule "emacs.d/vendor/auto-highlight-symbol"]
+#  path = emacs.d/vendor/auto-highlight-symbol
+#  url = git://github.com/mitsuo-saito/auto-highlight-symbol-mode.git
 [submodule "emacs.d/vendor/smex"]
   path = emacs.d/vendor/smex
   url = git://github.com/nonsequitur/smex.git

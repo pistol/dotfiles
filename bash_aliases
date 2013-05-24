@@ -115,9 +115,7 @@ function cd_color {
 
 # Display $PATH dirs one per line
 function path {
-  local path=$1
-  : ${path:=$PATH}
-  echo $path | tr ':' '\n'
+  printf '%s\n' "${1:-$PATH}" | sed "s@:$HOME/@:~/@g" | tr ':' '\n';
 }
 alias p='path'
 alias type='type -a'
@@ -156,7 +154,7 @@ ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)" | sort -fk1'
 alias ports="$ports"
 alias sports="sudo $ports"
 
-alias diffdir='diff -r -y --suppress-common-lines'
+alias diffdir='diff -r -y --suppress-common-lines -x .git -x .svn -x .repo'
 
 # Refresh file access times (avoid having files deleted for inactivity)
 function touchall {
