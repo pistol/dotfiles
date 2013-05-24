@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Display Machine (CPU + RAM) Info
+# Linux only (based on /proc/cpuinfo and free)
+
 numCPU=`cat /proc/cpuinfo | grep -c processor`
 numPhys=`cat /proc/cpuinfo | grep "physical id" | sort -n | uniq | wc -l`
 numCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'`
@@ -23,13 +26,24 @@ fi
 
 model=`cat /proc/cpuinfo | grep "model name" | uniq | sed 's/.*: //' | sed 's/\s\{2,\}/ /g'`
 
-echo "Model: $model" 
-echo "CPUs: $numCPU"
-echo "Cores: $numCores"
+echo "Model:   $model"
+echo "CPUs:    $numCPU"
+echo "Cores:   $numCores"
 echo "Sockets: $socks"
 if [ $isHT -eq 0 ]
 then
-    echo "HT: Yes"
+    echo -e "HT:      Yes"
 else
-    echo "HT: No"
+    echo -e "HT:       No"
 fi
+
+ram=`free -m | grep Mem | awk {'print $2'}`
+echo "RAM:     $ram MB"
+
+echo
+echo "Detailed CPU info:"
+lscpu
+
+echo
+echo "Detailed RAM info:"
+free -m
