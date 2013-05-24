@@ -156,6 +156,8 @@ alias sports="sudo $ports"
 
 alias diffdir='diff -r -y --suppress-common-lines -x .git -x .svn -x .repo'
 
+alias makej='make -j `getconf _NPROCESSORS_ONLN`'
+
 # Properly dispay disk usage sorted by size
 function dus {
   cd ${1:-.}
