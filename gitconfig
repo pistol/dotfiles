@@ -30,7 +30,7 @@
 [diff]
   ignoresubmodules = untracked
   tool = vimdiff
-	noprefix = true
+#	noprefix = true
 [core]
   excludesfile = ~/.gitignore
   whitespace = cr-at-eol,trailing-space,space-before-tab
