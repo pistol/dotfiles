@@ -64,6 +64,25 @@
  '(magit-diff-file-header       ((t ( :inherit diff-file-header ))))
  '(magit-diff-add               ((t ( :inherit diff-added ))))
  '(magit-diff-del               ((t ( :inherit diff-removed ))))
+
+ '(undo-tree-visualizer-active-branch-face ((t ( :background nil :foreground "Deep Pink"))))
+
+ '(ido-first-match              ((t (:foreground "Orchid" :background nil))))
+ '(ido-only-match               ((t (:foreground "deep pink" :background nil))))
+ '(ido-subdir                   ((t (:foreground "DodgerBlue" :background nil))))
+ '(ido-indicator                ((t (:foreground "black" :background "deep pink"))))
+
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "DodgerBlue"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "dark green"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "deep pink"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "yellow"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "green"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "light blue"))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "orange"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "slate blue"))))
+ '(rainbow-delimiters-depth-9-face ((t (:foreground "light gray"))))
+ '(rainbow-delimiters-unmatched-face ((t (:foreground "red"))))
+
 )
 
 (provide-theme 'pistol)
