@@ -15,6 +15,19 @@
 (define-key my-keys-minor-mode-map (kbd "C-M-<up>")      'enlarge-window)
 (define-key my-keys-minor-mode-map (kbd "C-M-<down>")    'shrink-window)
 
+;; Ace jump mode
+(define-key my-keys-minor-mode-map (kbd "C-o")           'ace-jump-mode)
+
+;; visual paste (browse kill ring)
+(define-key my-keys-minor-mode-map (kbd "M-y")           'browse-kill-ring)
+
+;; make C-\ and M-\ cut and copy
+(define-key my-keys-minor-mode-map (kbd "C-]")           'kill-region)
+(define-key my-keys-minor-mode-map (kbd "M-]")           'kill-ring-save)
+
+;;diff shortcuts
+(define-key my-keys-minor-mode-map (kbd "C-c d f")       'diff-buffer-with-file)
+
 ;; Compilation
 (define-key my-keys-minor-mode-map (kbd "M-<prior>")     'previous-error)
 (define-key my-keys-minor-mode-map (kbd "M-<next>")      'next-error)
@@ -95,7 +108,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-s M-s")       'save-buffer)
 
 ;; Find matching parens
-(define-key my-keys-minor-mode-map (kbd "%")             'match-paren)
+;; (define-key my-keys-minor-mode-map (kbd "%")             'match-paren)
 
 ;; Easy inserts
 ;; (define-key my-keys-minor-mode-map (kbd "C-.")           'insert-arrow)
