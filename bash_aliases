@@ -158,6 +158,12 @@ alias diffdir='diff -r -y --suppress-common-lines -x .git -x .svn -x .repo'
 
 alias makej='make -j `getconf _NPROCESSORS_ONLN`'
 
+# Refresh file access times (avoid having files deleted for inactivity)
+function touchall {
+  dir=${@:-.}
+  find $dir -exec touch -a {} \;
+}
+
 # Properly dispay disk usage sorted by size
 function dus {
   cd ${1:-.}
