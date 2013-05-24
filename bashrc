@@ -13,7 +13,11 @@ fi
 function prefix_path {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$PATH:" != *":$dir:"* ]]; then
-    export PATH="$dir:$PATH"
+    if [ -z $PATH ]; then
+      export PATH="$dir"
+    else
+      export PATH="$dir:$PATH"
+    fi
   fi
 }
 
@@ -24,7 +28,11 @@ function prefix_path {
 function prefix_manpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$MANPATH:" != *":$dir:"* ]]; then
-    export MANPATH="$dir:$MANPATH"
+    if [ -z $MANPATH ]; then
+      export MANPATH="$dir"
+    else
+      export MANPATH="$dir:$MANPATH"
+    fi
   fi
 }
 
@@ -35,15 +43,22 @@ function prefix_manpath {
 function prefix_cdpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$CDPATH:" != *":$dir:"* ]]; then
-    export CDPATH="$dir:$CDPATH"
+    if [ -z $CDPATH ]; then
+      export CDPATH="$dir"
+    else
+      export CDPATH="$dir:$CDPATH"
+    fi
   fi
-
 }
 
 function prefix_ldpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$LD_LIBRARY_PATH:" != *":$dir:"* ]]; then
-    export LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
+    if [ -z $LD_LIBRARY_PATH ]; then
+      export LD_LIBRARY_PATH="$dir"
+    else
+      export LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
+    fi
   fi
 }
 
