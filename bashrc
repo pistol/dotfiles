@@ -136,8 +136,6 @@ prefix_manpath /usr/share/man
 prefix_manpath /usr/local/man
 prefix_manpath /usr/local/share/man
 
-prefix_cdpath ~/work
-
 unset LD_LIBRARY_PATH
 prefix_ldpath /lib
 prefix_ldpath /usr/lib
@@ -250,8 +248,6 @@ esac
 prefix_path ~/bin
 prefix_path ~/bin/private
 # prefix_path .
-
-prefix_manpath ~/man
 
 # Need to investigate this, it broke down the Android build process
 # prefix_cdpath .
