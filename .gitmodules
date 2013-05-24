@@ -115,3 +115,9 @@
 [submodule "emacs.d/vendor/xclip"]
 	path = emacs.d/vendor/xclip
 	url = git://github.com/emacsmirror/xclip.git
+[submodule "emacs.d/vendor/profile-dotemacs"]
+	path = emacs.d/vendor/profile-dotemacs
+	url = git://github.com/emacsmirror/profile-dotemacs.git
+[submodule "emacs.d/vendor/auto-complete"]
+	path = emacs.d/vendor/auto-complete
+	url = git://github.com/emacsmirror/auto-complete.git
