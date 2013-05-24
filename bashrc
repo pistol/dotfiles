@@ -263,6 +263,10 @@ prefix_path ~/bin/private
 ## Bash Completion, if available
 ############################################################
 
+# Linux
+if [ -f /etc/bash_completion ]; then
+ . /etc/bash_completion
+fi
 # Mac: `brew --prefix` default is /usr/local
 if [ -f /usr/local/etc/bash_completion ]; then
  . /usr/local/etc/bash_completion
