@@ -142,6 +142,8 @@ alias rvim="vim -R -"
 alias br="source ~/.bashrc"
 # Fix irssi with tmux
 alias irssi='TERM=screen-256color irssi'
+# Set permissions recursively to allow only owner access
+alias chmod-private='chmod -R u=rwX,g=,o='
 
 # # Free space, human readable
 alias df='df -h'
