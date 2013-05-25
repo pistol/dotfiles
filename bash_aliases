@@ -142,6 +142,8 @@ alias rvim="vim -R -"
 alias br="source ~/.bashrc"
 # Fix irssi with tmux
 alias irssi='TERM=screen-256color irssi'
+# Set permissions recursively to allow only owner access
+alias chmod-private='chmod -R u=rwX,g=,o='
 
 # # Free space, human readable
 alias df='df -h'
@@ -155,6 +157,8 @@ alias ports="$ports"
 alias sports="sudo $ports"
 
 alias diffdir='diff -r -y --suppress-common-lines -x .git -x .svn -x .repo'
+
+alias makej='make -j `getconf _NPROCESSORS_ONLN`'
 
 # Refresh file access times (avoid having files deleted for inactivity)
 function touchall {

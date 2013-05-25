@@ -88,3 +88,36 @@
 [submodule "emacs.d/vendor/workgroups"]
 	path = emacs.d/vendor/workgroups
 	url = git://github.com/tlh/workgroups.el
+[submodule "emacs.d/vendor/undo-tree"]
+	path = emacs.d/vendor/undo-tree
+	url = git://github.com/emacsmirror/undo-tree.git
+[submodule "emacs.d/vendor/browse-kill-ring"]
+	path = emacs.d/vendor/browse-kill-ring
+	url = git://github.com/emacsmirror/browse-kill-ring.git
+[submodule "emacs.d/vendor/paredit"]
+	path = emacs.d/vendor/paredit
+	url = git://github.com/emacsmirror/paredit.git
+[submodule "emacs.d/vendor/refheap"]
+	path = emacs.d/vendor/refheap
+	url = git://github.com/Raynes/refheap.el.git
+[submodule "emacs.d/vendor/rainbow-delimiters"]
+	path = emacs.d/vendor/rainbow-delimiters
+	url = git://github.com/emacsmirror/rainbow-delimiters.git
+[submodule "emacs.d/vendor/auto-compile"]
+	path = emacs.d/vendor/auto-compile
+	url = git://github.com/emacsmirror/auto-compile.git
+[submodule "emacs.d/vendor/cl-lib"]
+	path = emacs.d/vendor/cl-lib
+	url = git://github.com/emacsmirror/cl-lib.git
+[submodule "emacs.d/vendor/packed"]
+	path = emacs.d/vendor/packed
+	url = git://github.com/emacsmirror/packed.git
+[submodule "emacs.d/vendor/xclip"]
+	path = emacs.d/vendor/xclip
+	url = git://github.com/emacsmirror/xclip.git
+[submodule "emacs.d/vendor/profile-dotemacs"]
+	path = emacs.d/vendor/profile-dotemacs
+	url = git://github.com/emacsmirror/profile-dotemacs.git
+[submodule "emacs.d/vendor/auto-complete"]
+	path = emacs.d/vendor/auto-complete
+	url = git://github.com/emacsmirror/auto-complete.git

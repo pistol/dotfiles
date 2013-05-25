@@ -13,7 +13,11 @@ fi
 function prefix_path {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$PATH:" != *":$dir:"* ]]; then
-    export PATH="$dir:$PATH"
+    if [ -z $PATH ]; then
+      export PATH="$dir"
+    else
+      export PATH="$dir:$PATH"
+    fi
   fi
 }
 
@@ -24,7 +28,11 @@ function prefix_path {
 function prefix_manpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$MANPATH:" != *":$dir:"* ]]; then
-    export MANPATH="$dir:$MANPATH"
+    if [ -z $MANPATH ]; then
+      export MANPATH="$dir"
+    else
+      export MANPATH="$dir:$MANPATH"
+    fi
   fi
 }
 
@@ -35,24 +43,31 @@ function prefix_manpath {
 function prefix_cdpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$CDPATH:" != *":$dir:"* ]]; then
-    export CDPATH="$dir:$CDPATH"
+    if [ -z $CDPATH ]; then
+      export CDPATH="$dir"
+    else
+      export CDPATH="$dir:$CDPATH"
+    fi
   fi
-
 }
 
 function prefix_ldpath {
   local dir=$1
   if [ -d "$dir" ] && [[ ":$LD_LIBRARY_PATH:" != *":$dir:"* ]]; then
-    export LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
+    if [ -z $LD_LIBRARY_PATH ]; then
+      export LD_LIBRARY_PATH="$dir"
+    else
+      export LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
+    fi
   fi
 }
 
+# WARNING: this seems to break things, must have full path!
 # Convert /home/username or /Users/username to ~/ in PATHs
-# Also remove last ':' if any
 function homify {
   local path=$1
   # Need to use ',' delimiter instead of '/' in sed since path contains '/'
-  echo $path | sed "s,$HOME,~,g" | sed 's/:$//'
+  echo $path | sed "s,$HOME,~,g"
 }
 
 ############################################################
@@ -114,12 +129,12 @@ prefix_path /usr/sbin
 prefix_path /usr/local/sbin
 prefix_path /usr/texbin
 
-prefix_manpath /usr/X11R6/man
+unset MANPATH
+prefix_manpath /usr/java/man
+prefix_manpath /usr/X11/share/man
 prefix_manpath /usr/share/man
 prefix_manpath /usr/local/man
 prefix_manpath /usr/local/share/man
-
-prefix_cdpath ~/work
 
 unset LD_LIBRARY_PATH
 prefix_ldpath /lib
@@ -234,22 +249,18 @@ prefix_path ~/bin
 prefix_path ~/bin/private
 # prefix_path .
 
-prefix_manpath ~/man
-
-# Need to investigate this, it broke down the Android build process
-# prefix_cdpath .
-
-# Homify paths
-# export PATH=`homify $PATH`
-# Homify MANPATH seems to not load man pages correctly in ~
-# export MANPATH=`homify $MANPATH`
-# export CDPATH=`homify $CDPATH`
-# export LD_LIBRARY_PATH=`homify $LD_LIBRARY_PATH`
+prefix_path ~/local/bin
+prefix_ldpath ~/local/lib
+prefix_manpath ~/local/share/man
 
 ############################################################
 ## Bash Completion, if available
 ############################################################
 
+# Linux
+if [ -f /etc/bash_completion ]; then
+ . /etc/bash_completion
+fi
 # Mac: `brew --prefix` default is /usr/local
 if [ -f /usr/local/etc/bash_completion ]; then
  . /usr/local/etc/bash_completion

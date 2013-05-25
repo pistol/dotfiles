@@ -136,3 +136,11 @@
 
 ;; workgroups mode
 (workgroups-mode 1)
+
+;; rainbow-delimiters in programming modes
+;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; the amazing undo tree
+(global-undo-tree-mode)
+
+;; Interact with X11 clipboard via xclip
+(xclip-mode 1)
