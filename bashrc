@@ -249,6 +249,9 @@ prefix_path ~/bin
 prefix_path ~/bin/private
 # prefix_path .
 
+prefix_path ~/local/bin
+prefix_ldpath ~/local/lib
+prefix_manpath ~/local/share/man
 
 ############################################################
 ## Bash Completion, if available
