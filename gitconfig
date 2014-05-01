@@ -11,6 +11,7 @@
   wsadd = "!sh -c 'git diff -- \"$@\" | git apply --cached --whitespace=fix;\
              git checkout -- ${1-.} \"$@\"' -"
 	unstage = reset HEAD --
+  wdiff = diff --color-words
 [apply]
   whitespace = fix
 [color]
