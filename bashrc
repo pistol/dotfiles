@@ -104,8 +104,11 @@ export HISTCONTROL=erasedups
 # increase the default size from only 1,000 items
 export HISTSIZE=1000000
 
-export TERM=xterm-256color
-export HOST=$( hostname )
+
+# Explicitly setting TERM in a shell config is a bad idea!
+# See: http://blog.sanctum.geek.nz/term-strings/
+# export TERM=xterm-256color
+# export HOST=$( hostname )
 
 ############################################################
 ## Aliases
@@ -189,7 +192,7 @@ if [ -n "$BASH" ]; then
   # Disable these for performance (fast cd)
   unset GIT_PS1_SHOWDIRTYSTATE
   unset GIT_PS1_SHOWUNTRACKEDFILES
-  export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOST\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]\$(__git_ps1)\n\[$bldred\]\$\[$txtrst\] "
+  export PS1="\[$txtgrn\]\u\[$txtrst\]@\[$bldgrn\]$HOSTNAME\[$txtrst\]: \[$txtblu\]\w\[$txtrst\]\[$txtred\]\$(__git_ps1)\n\[$bldred\]\$\[$txtrst\] "
 fi
 
 ############################################################
