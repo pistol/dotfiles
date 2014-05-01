@@ -30,6 +30,7 @@
 [diff]
   ignoresubmodules = untracked
   tool = vimdiff
+	algorithm = patience
 #	noprefix = true
 [core]
   excludesfile = ~/.gitignore
